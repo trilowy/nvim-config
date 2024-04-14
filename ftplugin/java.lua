@@ -64,6 +64,20 @@ local config = {
         -- settings = { url = 'https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml', profile = 'GoogleStyle' },
         settings = { url = vim.fn.expand '~/eclipse-formatter.xml', profile = 'eclipse-formatter' },
       },
+      cleanup = {
+        actionsOnSave = {
+          'qualifyMembers',
+          'qualifyStaticMembers',
+          'addOverride',
+          'addDeprecated',
+          'stringConcatToTextBlock',
+          'invertEquals',
+          'addFinalModifier',
+          'instanceofPatternMatch',
+          'lambdaExpression',
+          'switchExpression',
+        },
+      },
       completion = {
         favoriteStaticMembers = {
           'com.github.tomakehurst.wiremock.client.WireMock.*',
