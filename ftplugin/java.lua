@@ -1,12 +1,27 @@
--- jdtls dir
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.fn.stdpath 'data' .. '/jdtls-workspace/' .. project_name
+local mason_registry = require 'mason-registry'
+local jdtls_path = mason_registry.get_package('jdtls'):get_install_path()
+local java_debug_adapter_path = mason_registry.get_package('java-debug-adapter'):get_install_path()
+local java_test_path = mason_registry.get_package('java-test'):get_install_path()
+
+-- Determine OS
+local os
+if vim.fn.has 'windows' == 1 then
+  os = 'win'
+elseif vim.fn.has 'unix' == 1 then
+  os = 'linux'
+elseif vim.fn.has 'mac' == 1 then
+  os = 'mac'
+else
+  print 'Unsupported OS for jdtls'
+end
 
 local bundles = {
-  vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin-*.jar', true),
+  vim.fn.glob(java_debug_adapter_path .. '/extension/server/com.microsoft.java.debug.plugin-*.jar', true),
 }
 
-vim.list_extend(bundles, vim.split(vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/packages/java-test/extension/server/*.jar', true), '\n'))
+vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. '/extension/server/*.jar', true), '\n'))
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -26,11 +41,11 @@ local config = {
     'java.base/java.util=ALL-UNNAMED',
     '--add-opens',
     'java.base/java.lang=ALL-UNNAMED',
-    '-javaagent:' .. vim.fn.stdpath 'data' .. '/mason/packages/jdtls/lombok.jar',
+    '-javaagent:' .. jdtls_path .. '/lombok.jar',
     '-jar',
-    vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
+    vim.fn.glob(jdtls_path .. '/plugins/org.eclipse.equinox.launcher_*.jar'),
     '-configuration',
-    vim.fn.stdpath 'data' .. '/mason/packages/jdtls/config_win',
+    jdtls_path .. '/config_' .. os,
     '-data',
     workspace_dir,
   },
