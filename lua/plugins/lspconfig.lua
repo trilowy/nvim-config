@@ -111,7 +111,15 @@ return {
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
-        rust_analyzer = {},
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = {
+                command = 'clippy',
+              },
+            },
+          },
+        },
         jdtls = { autostart = false },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
