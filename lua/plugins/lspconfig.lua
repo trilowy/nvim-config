@@ -128,6 +128,25 @@ return {
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         tsserver = {},
+        -- jinja_lsp = {
+        --   filetypes = { 'htmldjango', 'rs' },
+        --   root_dir = function(fname)
+        --     return '.'
+        --     -- return nvim_lsp.util.find_git_ancestor(fname)
+        --   end,
+        --   init_options = {
+        --     templates = './templates',
+        --     backend = { './src' },
+        --     lang = 'rust',
+        --   },
+        -- },
+        html = {
+          settings = {
+            format = {
+              enable = true,
+            },
+          },
+        },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
