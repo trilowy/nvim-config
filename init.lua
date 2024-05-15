@@ -19,7 +19,7 @@ require 'lazy-bootstrap'
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
 
--- [[ Set default Windows Terminal ]]
-if vim.fn.has 'windows' == 1 then
+-- [[ Set default Windows Terminal when not in WSL ]]
+if vim.fn.has 'windows' == 1 and vim.fn.has 'linux' == 0 then
   require 'winshell'
 end
