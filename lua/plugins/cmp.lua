@@ -71,21 +71,21 @@ return {
           --  completions whenever it has completion options available.
           ['<C-Space>'] = cmp.mapping.complete {},
 
-          -- Think of <c-l> as moving to the right of your snippet expansion.
+          -- Think of <c-i> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
           --  function $name($args)
           --    $body
           --  end
           --
-          -- <c-l> will move you to the right of each of the expansion locations.
-          -- <c-h> is similar, except moving you backwards.
-          -- TODO: remap for Ergo‑L
-          ['<C-l>'] = cmp.mapping(function()
+          -- <c-i> will move you to the right of each of the expansion locations.
+          -- <c-l> is similar, except moving you backwards.
+          -- Note: i and l are l and h in Ergo‑L keylayout
+          ['<C-i>'] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
             end
           end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
+          ['<C-l>'] = cmp.mapping(function()
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
             end
