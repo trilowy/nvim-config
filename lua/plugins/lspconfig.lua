@@ -141,6 +141,7 @@ return {
             },
           },
         },
+        tailwindcss = {},
         zls = {},
         jdtls = { autostart = false },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
