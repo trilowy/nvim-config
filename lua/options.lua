@@ -4,6 +4,8 @@ vim.g.have_nerd_font = true
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
+-- Keep signcolumn on by default
+vim.opt.signcolumn = 'yes'
 
 -- Enable mouse mode (can be useful for resizing splits)
 vim.opt.mouse = 'a'
