@@ -22,6 +22,7 @@ return {
           sumiInk4 = '#151521', -- Darker foreground (line numbers, fold column, non-text characters), float borders
           sumiInk5 = '#222238', -- Current line
           waveBlue1 = '#334765', -- Popup background, visual selection background
+          waveBlue2 = '#AD4D2D', -- Popup selection
         },
       },
     },
