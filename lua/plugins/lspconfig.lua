@@ -80,6 +80,7 @@ return {
             },
           },
         },
+        taplo = {},
         tailwindcss = {},
         htmx = {},
         tsserver = {},
