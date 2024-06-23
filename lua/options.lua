@@ -7,6 +7,9 @@ vim.opt.relativenumber = true
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 
+-- Tab size
+vim.opt.tabstop = 4
+
 -- Enable mouse mode (can be useful for resizing splits)
 vim.opt.mouse = 'a'
 
