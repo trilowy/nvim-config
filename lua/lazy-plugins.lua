@@ -8,7 +8,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  require 'plugins.colorscheme',
+  -- require 'plugins.colorscheme-tokyonight',
+  require 'plugins.colorscheme-kanagawa',
   require 'plugins.gitsigns',
   require 'plugins.which-key',
   require 'plugins.telescope',
