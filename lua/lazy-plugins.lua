@@ -23,6 +23,7 @@ require('lazy').setup({
   require 'plugins.lualine',
   require 'plugins.crates',
   require 'plugins.none-ls',
+  require 'plugins.dressing',
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
