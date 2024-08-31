@@ -113,6 +113,7 @@ return {
             },
           },
         },
+        elixirls = {},
       }
 
       require('mason').setup()
