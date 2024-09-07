@@ -129,6 +129,10 @@ return {
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
+            -- https://github.com/neovim/nvim-lspconfig/pull/3232#issuecomment-2331025714
+            if server_name == 'tsserver' then
+              server_name = 'ts_ls'
+            end
             local server = servers[server_name] or {}
             -- TODO: maybe we do not have inlay hints because of that
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
