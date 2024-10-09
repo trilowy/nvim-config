@@ -1,6 +1,5 @@
 return {
   {
-    -- To see what colorschemes are installed: `:Telescope colorscheme`.
     'rebelot/kanagawa.nvim',
     priority = 1000,
     init = function()
@@ -19,6 +18,17 @@ return {
           waveBlue1 = '#334765', -- Popup background, visual selection background
           waveBlue2 = '#AD4D2D', -- Popup selection
           springGreen = '#42C492', -- String
+
+          -- kanagawa-lotus
+          lotusViolet4 = '#A626A4', -- pub fn let
+          lotusBlue4 = '#4078F2', -- Function name
+          lotusYellow = '#986801', -- Function var
+          lotusWhite3 = '#FBFCFE', -- Background
+          lotusWhite4 = '#EAECF3', -- Left background
+          lotusWhite5 = '#EAECF3', -- Line highlight
+          lotusAqua = '#3DA57D', -- Type
+          lotusInk1 = '#1E1E1E', -- Text
+          lotusYellow2 = '#986801', -- Pipe operator
         },
       },
     },
