@@ -6,8 +6,9 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = '[w]rite buffer' })
 vim.keymap.set('n', '<leader>c', '<cmd>bd<CR>', { desc = '[c]lose buffer' })
-
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<A-o>', 'm`o<Esc>``', { desc = 'add empty line below' })
+vim.keymap.set('n', '<A-O>', 'm`O<Esc>``', { desc = 'add empty line above' })
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'exit terminal mode' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking text',
@@ -19,8 +20,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.keymap.set('n', ']t', function()
   require('todo-comments').jump_next()
-end, { desc = 'Next todo comment' })
+end, { desc = 'next todo comment' })
 
 vim.keymap.set('n', '[t', function()
   require('todo-comments').jump_prev()
-end, { desc = 'Previous todo comment' })
+end, { desc = 'previous todo comment' })
