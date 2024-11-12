@@ -13,50 +13,48 @@ return {
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
-        end
-
         -- Navigation
-        map('n', ']c', function()
+        vim.keymap.set('n', ']c', function()
           if vim.wo.diff then
             vim.cmd.normal { ']c', bang = true }
           else
             gitsigns.nav_hunk 'next'
           end
-        end, { desc = 'Jump to next git [c]hange' })
+        end, { buffer = bufnr, desc = 'git: next [c]hange' })
 
-        map('n', '[c', function()
+        vim.keymap.set('n', '[c', function()
           if vim.wo.diff then
             vim.cmd.normal { '[c', bang = true }
           else
             gitsigns.nav_hunk 'prev'
           end
-        end, { desc = 'Jump to previous git [c]hange' })
+        end, { buffer = bufnr, desc = 'git: previous [c]hange' })
 
         -- Actions
-        map('v', '<leader>hs', function()
+        vim.keymap.set('n', '<leader>ga', gitsigns.stage_hunk, { buffer = bufnr, desc = '[g]it: [a]dd hunk (stage)' })
+        vim.keymap.set('v', '<leader>ga', function()
           gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-        end, { desc = 'stage git hunk' })
-        map('v', '<leader>hr', function()
-          gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-        end, { desc = 'reset git hunk' })
-        map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'git [s]tage hunk' })
-        map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'git [r]eset hunk' })
-        map('n', '<leader>hS', gitsigns.stage_buffer, { desc = 'git [S]tage buffer' })
-        map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = 'git [u]ndo stage hunk' })
-        map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
-        map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
-        map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git [b]lame line' })
-        map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
-        map('n', '<leader>hD', function()
+        end, { buffer = bufnr, desc = '[g]it: [a]dd hunk (stage)' })
+        vim.keymap.set('n', '<leader>gA', gitsigns.stage_buffer, { buffer = bufnr, desc = '[g]it: [A]dd buffer (stage)' })
+
+        vim.keymap.set('n', '<leader>gB', gitsigns.blame_line, { buffer = bufnr, desc = '[g]it: [b]lame line' })
+
+        vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { buffer = bufnr, desc = '[g]it: [d]iff against index' })
+        vim.keymap.set('n', '<leader>gD', function()
           gitsigns.diffthis '@'
-        end, { desc = 'git [D]iff against last commit' })
-        -- Toggles
-        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
-        map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
+        end, { buffer = bufnr, desc = '[g]it: [D]iff against last commit' })
+
+        vim.keymap.set('n', '<leader>ge', gitsigns.toggle_deleted, { buffer = bufnr, desc = '[g]it: toggle git show d[e]leted' })
+        vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { buffer = bufnr, desc = '[g]it: [p]review hunk' })
+
+        vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { buffer = bufnr, desc = '[g]it: [r]eset hunk' })
+        vim.keymap.set('v', '<leader>gr', function()
+          gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { buffer = bufnr, desc = '[g]it: [r]eset hunk' })
+        vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { buffer = bufnr, desc = '[g]it: [R]eset buffer' })
+
+        vim.keymap.set('n', '<leader>gT', gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = '[g]it: [T]oggle show blame line' })
+        vim.keymap.set('n', '<leader>gu', gitsigns.undo_stage_hunk, { buffer = bufnr, desc = '[g]it: [u]ndo stage hunk' })
       end,
     },
   },

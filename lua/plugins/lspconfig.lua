@@ -12,24 +12,17 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
         callback = function(event)
-          local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-          end
-
-          local mapi = function(keys, func, desc)
-            vim.keymap.set('i', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-          end
-
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-          map('<leader>Ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-          mapi('<C-s>', vim.lsp.buf.signature_help, '[S]ignature Help')
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          local telescope = require 'telescope.builtin'
+          vim.keymap.set('n', 'gd', telescope.lsp_definitions, { buffer = event.buf, desc = 'LSP: [g]oto [d]efinition' })
+          vim.keymap.set('n', 'gr', telescope.lsp_references, { buffer = event.buf, desc = 'LSP: [g]oto [r]eferences' })
+          vim.keymap.set('n', 'gI', telescope.lsp_implementations, { buffer = event.buf, desc = 'LSP: [g]oto [I]mplementation' })
+          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = event.buf, desc = 'LSP: [g]oto [D]eclaration' })
+          vim.keymap.set('n', 'gy', telescope.lsp_type_definitions, { buffer = event.buf, desc = 'LSP: [g]oto t[y]pe definition' })
+          vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { buffer = event.buf, desc = '[L]SP: code [a]ctions' })
+          vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { buffer = event.buf, desc = '[L]SP: [r]ename' })
+          vim.keymap.set('n', '<leader>ls', telescope.lsp_document_symbols, { buffer = event.buf, desc = '[L]SP: document [s]ymbols' })
+          vim.keymap.set('n', '<leader>lS', telescope.lsp_dynamic_workspace_symbols, { buffer = event.buf, desc = '[L]SP: workspace [S]ymbols' })
+          vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = '[L]SP: [s]ignature help' })
 
           -- Highlight references of the word under the cursor
           -- When move cursor highlight is cleared
@@ -59,9 +52,9 @@ return {
 
           -- Inlay hints
           if client and client.supports_method 'inlayHint/resolve' and vim.lsp.inlay_hint then
-            map('<leader>th', function()
+            vim.keymap.set('n', '<leader>lh', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
-            end, '[T]oggle Inlay [H]ints')
+            end, { buffer = event.buf, desc = '[L]SP: toggle inlay [h]ints' })
           end
         end,
       })
