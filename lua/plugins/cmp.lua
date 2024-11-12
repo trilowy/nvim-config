@@ -49,10 +49,10 @@ return {
           ['<C-n>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
           ['<C-p>'] = cmp.mapping.select_prev_item(),
-          -- Accept ([y]es) the completion.
+          -- Accept ([i]nsert) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<C-i>'] = cmp.mapping.confirm { select = true },
 
           -- TODO: For more traditional completion keymaps
           --['<Tab>'] = cmp.mapping.select_next_item(),
