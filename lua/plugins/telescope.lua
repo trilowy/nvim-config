@@ -65,6 +65,13 @@ return {
           enable_preview = true,
         }
       end, { desc = '[s]earch [c]olor scheme' })
+
+      vim.keymap.set(
+        'v',
+        '<leader>sg',
+        "\"zy<cmd>exec 'Telescope grep_string default_text=' . escape(@z, ' ')<cr>",
+        { desc = '[s]earch by [g]rep the selection' }
+      )
     end,
   },
 }

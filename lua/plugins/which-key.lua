@@ -14,6 +14,7 @@ return {
           { '<leader>s_', hidden = true },
           -- visual mode
           { '<leader>g', group = '[G]it', mode = 'v' },
+          { '<leader>s', group = '[S]earch', mode = 'v' },
         },
       },
     },
