@@ -110,6 +110,7 @@ return {
           },
         },
         gleam = {},
+        superhtml = {},
       }
 
       require('mason').setup()
