@@ -64,15 +64,6 @@ return {
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local servers = {
-        rust_analyzer = {
-          settings = {
-            ['rust-analyzer'] = {
-              checkOnSave = {
-                command = 'clippy',
-              },
-            },
-          },
-        },
         taplo = {},
         tailwindcss = {},
         htmx = {},
@@ -106,7 +97,19 @@ return {
             },
           },
         },
-        elixirls = {},
+      }
+
+      local external_servers = {
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = {
+                command = 'clippy',
+              },
+            },
+          },
+        },
+        gleam = {},
       }
 
       require('mason').setup()
@@ -119,18 +122,22 @@ return {
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      -- Configure LSP installed with Mason
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
-            local server = servers[server_name] or {}
-            -- TODO: maybe we do not have inlay hints because of that
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            local server_config = servers[server_name] or {}
+            server_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server_config.capabilities or {})
+            require('lspconfig')[server_name].setup(server_config)
           end,
         },
       }
 
-      require('lspconfig').gleam.setup { capabilities = capabilities }
+      -- Configure LSP not installed with Mason
+      for server_name, server_config in pairs(external_servers) do
+        server_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server_config.capabilities or {})
+        require('lspconfig')[server_name].setup(server_config)
+      end
     end,
   },
 }
