@@ -48,7 +48,7 @@ return {
     vim.keymap.set('n', '<leader>gt', builtin.git_status, { desc = '[g]it: s[t]atus' })
 
     vim.keymap.set('n', '<leader>sp', function()
-      require('telescope').extensions.repo.list { search_dirs = { '~/workspace' } }
+      require('telescope').extensions.repo.list { search_dirs = { '~/projects' } }
     end, { desc = '[s]earch in workspace [p]rojects' })
 
     vim.keymap.set('n', '<leader><leader>', function()
