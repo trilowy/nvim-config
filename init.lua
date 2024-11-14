@@ -892,3 +892,12 @@ vim.keymap.set('n', '<leader>rH', crates.open_homepage, { desc = '[r]ust crates:
 vim.keymap.set('n', '<leader>rR', crates.open_repository, { desc = '[r]ust crates: [R]epository' })
 vim.keymap.set('n', '<leader>rD', crates.open_documentation, { desc = '[r]ust crates: [D]ocumentation' })
 vim.keymap.set('n', '<leader>rC', crates.open_crates_io, { desc = '[r]ust crates: open [C]rates.io' })
+
+vim.keymap.set('n', '<leader>ave', '<cmd>silent !ansible-vault encrypt %<cr>', { desc = '[a]nsible-[v]ault [e]ncrypt' })
+vim.keymap.set('n', '<leader>avd', '<cmd>silent !ansible-vault decrypt %<cr>', { desc = '[a]nsible-[v]ault [d]ecrypt' })
+vim.keymap.set(
+  'n',
+  '<leader>hv',
+  '<cmd>silent !~/software/kubectl/helm-vault -f ~/credentials/helm-vault-pass -i %<cr>',
+  { desc = '[h]elm-[v]ault encrypt/decrypt' }
+)
