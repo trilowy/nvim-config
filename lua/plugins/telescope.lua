@@ -15,6 +15,7 @@ return {
       },
       'nvim-telescope/telescope-ui-select.nvim',
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      'nvim-telescope/telescope-project.nvim',
     },
     config = function()
       require('telescope').setup {
@@ -27,6 +28,7 @@ return {
 
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension 'project')
 
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[s]earch recent files ("." for repeat)' })
@@ -45,6 +47,10 @@ return {
       vim.keymap.set('n', '<leader>gh', builtin.git_commits, { desc = '[g]it: project commit [h]istory' })
       vim.keymap.set('n', '<leader>gs', builtin.git_stash, { desc = '[g]it: [s]tashes' })
       vim.keymap.set('n', '<leader>gt', builtin.git_status, { desc = '[g]it: s[t]atus' })
+
+      vim.keymap.set('n', '<leader>sp', function()
+        require('telescope').extensions.project.project {}
+      end, { desc = '[s]earch in workspace [p]rojects' })
 
       vim.keymap.set('n', '<leader><leader>', function()
         builtin.buffers {
