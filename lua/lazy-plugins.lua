@@ -28,6 +28,7 @@ require('lazy').setup({
   require 'plugins.dressing',
   require 'plugins.auto-session',
   require 'plugins.rooter',
+  require 'plugins.jdtls',
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {

@@ -109,3 +109,10 @@ Note: `<leader>` is `space` in this configuration.
 ### todo-comments plugin
 
 - `]t` and `[t` - next/previous [t]odo in the buffer
+
+### nvim-jdtls plugin
+
+- `<leader>jo` - [j]ava: [o]rganize imports
+- `<leader>jv` - [j]ava: extract [v]ariable
+- `<leader>jc` - [j]ava: extract [c]onstant
+- `<leader>jm` - [j]ava: extract [m]ethod

@@ -14,6 +14,8 @@ return {
           { '<leader>s_', hidden = true },
           { '<leader>r', group = '[R]ust crates' },
           { '<leader>r_', hidden = true },
+          { '<leader>j', group = '[J]ava' },
+          { '<leader>j_', hidden = true },
           -- visual mode
           { '<leader>g', group = '[G]it', mode = 'v' },
           { '<leader>s', group = '[S]earch', mode = 'v' },
