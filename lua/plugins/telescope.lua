@@ -57,14 +57,14 @@ return {
           sort_mru = true,
           ignore_current_buffer = true,
         }
-      end, { desc = '[ ] Find existing buffers' })
+      end, { desc = 'find existing buffers' })
 
       vim.keymap.set('n', '<leader>/', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
           previewer = false,
         })
-      end, { desc = '[/] Fuzzily search in current buffer' })
+      end, { desc = 'fuzzily search in current buffer' })
 
       vim.keymap.set('n', '<leader>sc', function()
         builtin.colorscheme {

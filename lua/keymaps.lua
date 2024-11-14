@@ -20,8 +20,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.keymap.set('n', ']t', function()
   require('todo-comments').jump_next()
-end, { desc = 'next todo comment' })
+end, { desc = 'next [t]odo comment' })
 
 vim.keymap.set('n', '[t', function()
   require('todo-comments').jump_prev()
-end, { desc = 'previous todo comment' })
+end, { desc = 'previous [t]odo comment' })

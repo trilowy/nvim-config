@@ -41,7 +41,7 @@ return {
         completion = { completeopt = 'menu,menuone,noinsert' },
 
         mapping = cmp.mapping.preset.insert {
-          -- Scroll the documentation window [b]ack / [f]orward
+          -- Scroll the documentation window [b]ack/[f]orward
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
 

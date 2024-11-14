@@ -12,9 +12,12 @@ return {
           { '<leader>l_', hidden = true },
           { '<leader>s', group = '[S]earch' },
           { '<leader>s_', hidden = true },
+          { '<leader>r', group = '[R]ust crates' },
+          { '<leader>r_', hidden = true },
           -- visual mode
           { '<leader>g', group = '[G]it', mode = 'v' },
           { '<leader>s', group = '[S]earch', mode = 'v' },
+          { '<leader>r', group = '[R]ust crates', mode = 'v' },
         },
       },
     },

@@ -10,33 +10,25 @@ return {
       },
     }
 
-    local map = function(keys, func, desc)
-      vim.keymap.set('n', keys, func, { silent = true, desc = 'Crates: ' .. desc })
-    end
+    vim.keymap.set('n', '<leader>rt', crates.toggle, { silent = true, desc = '[r]ust crates: [t]oggle' })
+    vim.keymap.set('n', '<leader>rr', crates.reload, { silent = true, desc = '[r]ust crates: [r]eload' })
 
-    local mapv = function(keys, func, desc)
-      vim.keymap.set('v', keys, func, { silent = true, desc = 'Crates: ' .. desc })
-    end
+    vim.keymap.set('n', '<leader>rv', crates.show_versions_popup, { silent = true, desc = '[r]ust crates: show [v]ersions' })
+    vim.keymap.set('n', '<leader>rf', crates.show_features_popup, { silent = true, desc = '[r]ust crates: show [f]eatures' })
+    vim.keymap.set('n', '<leader>rd', crates.show_dependencies_popup, { silent = true, desc = '[r]ust crates: show [d]ependencies' })
 
-    map('<leader>ct', crates.toggle, '[C]rates [T]oggle')
-    map('<leader>cr', crates.reload, '[C]rates [R]eload')
+    vim.keymap.set('n', '<leader>ru', crates.update_crate, { silent = true, desc = '[r]ust crates: [u]pdate' })
+    vim.keymap.set('v', '<leader>ru', crates.update_crates, { silent = true, desc = '[r]ust crates: [u]pdate' })
+    vim.keymap.set('n', '<leader>rU', crates.upgrade_crate, { silent = true, desc = '[r]ust crates: [U]pgrade' })
+    vim.keymap.set('v', '<leader>rU', crates.upgrade_crates, { silent = true, desc = '[r]ust crates: [U]pgrade' })
+    vim.keymap.set('n', '<leader>rA', crates.upgrade_all_crates, { silent = true, desc = '[r]ust crates: upgrade [A]ll crates' })
 
-    map('<leader>cv', crates.show_versions_popup, '[C]rates show [V]ersions')
-    map('<leader>cf', crates.show_features_popup, '[C]rates show [F]eatures')
-    map('<leader>cd', crates.show_dependencies_popup, '[C]rates show [D]ependencies')
+    vim.keymap.set('n', '<leader>rx', crates.expand_plain_crate_to_inline_table, { silent = true, desc = '[r]ust crates: e[x]pand to inline table' })
+    vim.keymap.set('n', '<leader>rX', crates.extract_crate_into_table, { silent = true, desc = '[r]ust crates: e[X]tract into table' })
 
-    map('<leader>cu', crates.update_crate, '[C]rates [U]pdate')
-    mapv('<leader>cu', crates.update_crates, '[C]rates [U]pdate')
-    map('<leader>cU', crates.upgrade_crate, '[C]rates [U]pgrade')
-    mapv('<leader>cU', crates.upgrade_crates, '[C]rates [U]pgrade')
-    map('<leader>cA', crates.upgrade_all_crates, '[C]rates upgrade [A]ll crates')
-
-    map('<leader>cx', crates.expand_plain_crate_to_inline_table, '[C]rates expand to inline table')
-    map('<leader>cX', crates.extract_crate_into_table, '[C]rates extract into table')
-
-    map('<leader>cH', crates.open_homepage, '[C]rates [H]omepage')
-    map('<leader>cR', crates.open_repository, '[C]rates [R]epository')
-    map('<leader>cD', crates.open_documentation, '[C]rates [D]ocumentation')
-    map('<leader>cC', crates.open_crates_io, '[C]rates open [C]rates.io')
+    vim.keymap.set('n', '<leader>rH', crates.open_homepage, { silent = true, desc = '[r]ust crates: [H]omepage' })
+    vim.keymap.set('n', '<leader>rR', crates.open_repository, { silent = true, desc = '[r]ust crates: [R]epository' })
+    vim.keymap.set('n', '<leader>rD', crates.open_documentation, { silent = true, desc = '[r]ust crates: [D]ocumentation' })
+    vim.keymap.set('n', '<leader>rC', crates.open_crates_io, { silent = true, desc = '[r]ust crates: open [C]rates.io' })
   end,
 }
