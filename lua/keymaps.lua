@@ -29,3 +29,7 @@ end, { desc = 'next [t]odo comment' })
 vim.keymap.set('n', '[t', function()
   require('todo-comments').jump_prev()
 end, { desc = 'previous [t]odo comment' })
+
+vim.keymap.set('n', '<leader>ave', '<cmd>silent !ansible-vault encrypt %<CR>', { desc = '[a]nsible-[v]ault [e]ncrypt' })
+vim.keymap.set('n', '<leader>avd', '<cmd>silent !ansible-vault decrypt %<CR>', { desc = '[a]nsible-[v]ault [d]ecrypt' })
+vim.keymap.set('n', '<leader>hv', '<cmd>silent !helm-vault -f $CREDENTIALS_DIR/helm-vault-pass -i %<CR>', { desc = '[h]elm-[v]ault encrypt/decrypt' })
