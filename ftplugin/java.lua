@@ -89,6 +89,7 @@ local config = {
             path = '/usr/local/sdkman/candidates/java/21.0.5-tem/',
           },
           {
+            default = true,
             name = 'JavaSE-17',
             path = '/usr/local/sdkman/candidates/java/17.0.13-tem/',
           },

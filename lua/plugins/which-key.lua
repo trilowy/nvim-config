@@ -15,6 +15,8 @@ return {
         { '<leader>r_', hidden = true },
         { '<leader>j', group = '[J]ava' },
         { '<leader>j_', hidden = true },
+        { '<leader>t', group = '[T]est' },
+        { '<leader>t_', hidden = true },
         -- visual mode
         { '<leader>g', group = '[G]it', mode = 'v' },
         { '<leader>s', group = '[S]earch', mode = 'v' },

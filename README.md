@@ -116,3 +116,14 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>jv` - [j]ava: extract [v]ariable
 - `<leader>jc` - [j]ava: extract [c]onstant
 - `<leader>jm` - [j]ava: extract [m]ethod
+
+### neotest plugin
+
+- `<leader>tl` - [t]est: run [l]ast test
+- `<leader>tn` - [t]est: run [n]earest
+- `<leader>to` - [t]est: show [o]utput
+- `<leader>tO` - [t]est: toggle [O]utput panel
+- `<leader>ts` - [t]est: toggle [s]ummary
+- `<leader>tS` - [t]est: [S]top
+- `<leader>tt` - [t]est: run [t]est file
+- `<leader>tT` - [t]est: run all [T]est files
