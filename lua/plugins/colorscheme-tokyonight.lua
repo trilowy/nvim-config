@@ -1,5 +1,1 @@
-return {
-  {
-    'folke/tokyonight.nvim',
-  },
-}
+return 'folke/tokyonight.nvim'
