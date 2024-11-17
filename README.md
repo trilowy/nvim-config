@@ -15,6 +15,7 @@ Note: `<leader>` is `space` in this configuration.
 
 - `<leader>w` - [w]rite buffer
 - `<leader>c` - [c]lose buffer
+- `<leader>d` - hover [d]iagnostic
 - `<A-o>` - add empty line below
 - `<A-O>` - add empty line above
 

@@ -18,6 +18,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.keymap.set('n', '<leader>d', function()
+  vim.diagnostic.open_float()
+end, { desc = '[d]iagnostic: hover' })
+
 vim.keymap.set('n', ']t', function()
   require('todo-comments').jump_next()
 end, { desc = 'next [t]odo comment' })
