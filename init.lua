@@ -682,6 +682,7 @@ vim.lsp.enable {
   -- 'superhtml',
   -- 'tailwindcss',
   'zig',
+  'scala',
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {
