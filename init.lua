@@ -683,6 +683,7 @@ vim.lsp.enable {
   -- 'tailwindcss',
   'zig',
   'java',
+  'scala',
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {
