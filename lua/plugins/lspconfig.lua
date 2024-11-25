@@ -109,6 +109,7 @@ return {
       -- superhtml = {
       --   filetypes = { 'html', 'zmpl' },
       -- },
+      metals = {},
     }
 
     -- zls: don't show parse errors in a separate window
