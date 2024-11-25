@@ -113,6 +113,7 @@ return {
       },
       gleam = {},
       superhtml = {},
+      metals = {},
     }
 
     require('mason').setup()
