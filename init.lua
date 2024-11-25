@@ -689,6 +689,7 @@ vim.lsp.enable {
   'kotlin',
   -- 'tailwindcss',
   'zig',
+  'scala',
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {
