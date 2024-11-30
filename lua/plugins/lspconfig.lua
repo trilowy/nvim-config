@@ -98,6 +98,7 @@ return {
       },
       -- Java LSP configured in nvim-jdtls plugin
       jdtls = { autostart = false },
+      zls = {},
     }
 
     local external_servers = {
