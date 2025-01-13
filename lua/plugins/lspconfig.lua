@@ -67,19 +67,6 @@ return {
       tailwindcss = {},
       htmx = {},
       ts_ls = {},
-      -- TODO: askama LSP
-      -- jinja_lsp = {
-      --   filetypes = { 'htmldjango', 'rs' },
-      --   root_dir = function(fname)
-      --     return '.'
-      --     -- return nvim_lsp.util.find_git_ancestor(fname)
-      --   end,
-      --   init_options = {
-      --     templates = './templates',
-      --     backend = { './src' },
-      --     lang = 'rust',
-      --   },
-      -- },
       html = {
         settings = {
           format = {
@@ -112,7 +99,10 @@ return {
         },
       },
       gleam = {},
-      superhtml = {},
+      -- FIXME: superhtml crashes on small templates without layout
+      -- superhtml = {
+      --   filetypes = { 'html', 'zmpl' },
+      -- },
     }
 
     require('mason').setup()

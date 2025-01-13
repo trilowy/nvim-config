@@ -11,6 +11,13 @@ return {
     indent = { enable = true },
   },
   config = function(_, opts)
+    -- Recognize *.zpml file as HTML
+    vim.filetype.add {
+      extension = {
+        zmpl = 'html',
+      },
+    }
+
     -- Prefer git instead of curl in order to improve connectivity in some environments
     require('nvim-treesitter.install').prefer_git = true
 
