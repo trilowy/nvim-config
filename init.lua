@@ -1,7 +1,16 @@
-require 'options'
-require 'keymaps'
-require 'lazy-plugins'
+-- Install plugin manager
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+end ---@diagnostic disable-next-line: undefined-field
+vim.opt.rtp:prepend(lazypath)
 
-if vim.fn.has 'windows' == 1 and vim.fn.has 'linux' == 1 then
-  require 'win-wsl'
-end
+require('lazy').setup({
+  {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('lspconfig')['zls'].setup {}
+    end,
+  },
+}, {})
