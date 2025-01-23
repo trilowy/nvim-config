@@ -14,3 +14,5 @@ require('lazy').setup({
     end,
   },
 }, {})
+
+vim.lsp.set_log_level 'debug'
