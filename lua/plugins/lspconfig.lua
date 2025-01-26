@@ -105,6 +105,9 @@ return {
       -- },
     }
 
+    -- zls: don't show parse errors in a separate window
+    vim.g.zig_fmt_parse_errors = 0
+
     require('mason').setup()
 
     local ensure_installed = vim.tbl_keys(servers or {})
