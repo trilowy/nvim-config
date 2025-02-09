@@ -88,7 +88,13 @@ return {
     }
 
     local external_servers = {
-      zls = {},
+      zls = {
+        settings = {
+          zls = {
+            enable_build_on_save = true,
+          },
+        },
+      },
       rust_analyzer = {
         settings = {
           ['rust-analyzer'] = {
