@@ -39,7 +39,10 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      javascript = { { 'prettierd', 'prettier' } },
+      javascript = {
+        stop_after_first = true,
+        formatters = { 'prettierd', 'prettier' },
+      },
     },
   },
 }
