@@ -25,6 +25,7 @@ require('lazy').setup({
   require 'plugins.lualine',
   require 'plugins.crates',
   require 'plugins.none-ls',
+  require 'plugins.oil',
   require 'plugins.dressing',
   require 'plugins.auto-session',
   require 'plugins.rooter',

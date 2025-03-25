@@ -89,6 +89,10 @@ Note: `<leader>` is `space` in this configuration.
 
 - `\` - NeoTree reveal
 
+### oil.nvim plugin
+
+- `-` - open parent directory
+
 ### telescope.nvim plugin
 
 - `<leader><leader>` - find existing buffers
