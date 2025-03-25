@@ -126,6 +126,8 @@ return {
 
     -- Configure LSP installed with Mason
     require('mason-lspconfig').setup {
+      ensure_installed = {},
+      automatic_installation = false,
       handlers = {
         function(server_name)
           local server_config = servers[server_name] or {}

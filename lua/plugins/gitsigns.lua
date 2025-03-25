@@ -43,7 +43,7 @@ return {
         gitsigns.diffthis '@'
       end, { buffer = bufnr, desc = '[g]it: [D]iff against last commit' })
 
-      vim.keymap.set('n', '<leader>ge', gitsigns.toggle_deleted, { buffer = bufnr, desc = '[g]it: toggle git show d[e]leted' })
+      vim.keymap.set('n', '<leader>ge', gitsigns.preview_hunk_inline, { buffer = bufnr, desc = '[g]it: toggle git show d[e]leted' })
       vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { buffer = bufnr, desc = '[g]it: [p]review hunk' })
 
       vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { buffer = bufnr, desc = '[g]it: [r]eset hunk' })
@@ -53,7 +53,6 @@ return {
       vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { buffer = bufnr, desc = '[g]it: [R]eset buffer' })
 
       vim.keymap.set('n', '<leader>gT', gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = '[g]it: [T]oggle show blame line' })
-      vim.keymap.set('n', '<leader>gu', gitsigns.undo_stage_hunk, { buffer = bufnr, desc = '[g]it: [u]ndo stage hunk' })
     end,
   },
 }

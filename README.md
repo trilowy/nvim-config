@@ -57,7 +57,7 @@ Note: `<leader>` is `space` in this configuration.
 - `]c` and `[c` - git: next/previous [c]hange
 - `<leader>ga` - [g]it: [a]dd hunk (stage)
 - `<leader>gA` - [g]it: [A]dd buffer (stage)
-- `<leader>gb` - [g]it: [b]ranches
+- `<leader>gb` - [g]it: [b]ranches (`<C-t>` to track new remote branch)
 - `<leader>gB` - [g]it: [b]lame line
 - `<leader>gd` - [g]it: [d]iff against index
 - `<leader>gD` - [g]it: [D]iff against last commit
@@ -70,7 +70,6 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>gs` - [g]it: [s]tashes
 - `<leader>gt` - [g]it: s[t]atus
 - `<leader>gT` - [g]it: [T]oggle show blame line
-- `<leader>gu` - [g]it: [u]ndo stage hunk
 
 ### nvim-lspconfig plugin
 
