@@ -77,25 +77,25 @@ local config = {
         cleanup = true,
       },
 
-      -- eclipse = {
-      --   downloadSources = true,
-      -- },
+      eclipse = {
+        downloadSources = true,
+      },
+
+      maven = {
+        downloadSources = true,
+      },
 
       configuration = {
         updateBuildConfiguration = 'interactive',
         runtimes = {
           {
-            name = 'JavaSE-21',
-            path = '/usr/local/sdkman/candidates/java/21.0.5-tem/',
-          },
-          {
             default = true,
-            name = 'JavaSE-17',
-            path = '/usr/local/sdkman/candidates/java/17.0.13-tem/',
+            name = 'JavaSE-21',
+            path = '/usr/lib64/jvm/java-21-openjdk/',
           },
           {
-            name = 'JavaSE-11',
-            path = '/usr/local/sdkman/candidates/java/11.0.25-tem/',
+            name = 'JavaSE-17',
+            path = '/usr/lib64/jvm/java-17-openjdk/',
           },
         },
       },
