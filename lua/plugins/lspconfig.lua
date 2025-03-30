@@ -65,8 +65,9 @@ return {
     local servers = {
       taplo = {},
       tailwindcss = {},
-      htmx = {},
-      ts_ls = {},
+      -- htmx = {},
+      -- ts_ls = {},
+      svelte = {},
       html = {
         settings = {
           format = {
