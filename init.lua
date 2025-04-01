@@ -324,7 +324,7 @@ require('lazy').setup {
                 separator = ' ',
               },
               -- LSP to ignore
-              ignore_lsp = { 'null-ls', 'crates.nvim' },
+              ignore_lsp = { 'null-ls', 'crates.nvim', 'copilot' },
             },
           },
         },
@@ -608,6 +608,17 @@ require('lazy').setup {
       'mfussenegger/nvim-jdtls',
       ft = 'java',
     },
+
+    -- Copilot
+    -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
+    {
+      'CopilotC-Nvim/CopilotChat.nvim',
+      dependencies = {
+        { 'zbirenbaum/copilot.lua' },
+        { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+      },
+      opts = {},
+    },
   },
 }
 
@@ -850,3 +861,5 @@ vim.keymap.set('n', '<leader>rC', crates.open_crates_io, { desc = '[r]ust crates
 vim.keymap.set('n', '<leader>ave', '<cmd>silent !ansible-vault encrypt %<cr>', { desc = '[a]nsible-[v]ault [e]ncrypt' })
 vim.keymap.set('n', '<leader>avd', '<cmd>silent !ansible-vault decrypt %<cr>', { desc = '[a]nsible-[v]ault [d]ecrypt' })
 vim.keymap.set('n', '<leader>hv', '<cmd>silent !helm-vault -f ~/credentials/helm-vault-pass -i %<cr>', { desc = '[h]elm-[v]ault encrypt/decrypt' })
+
+vim.keymap.set('n', '<leader>i', '<cmd>CopilotChatToggle<cr>', { desc = 'A[i] prompt chat' })
