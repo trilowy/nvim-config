@@ -1,3 +1,6 @@
+-- TODO: add Sonarqube https://github.com/williamboman/mason.nvim/issues/247
+-- TODO: debug/test https://www.youtube.com/watch?v=TryxysOh-fI
+
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.fn.stdpath 'data' .. '/jdtls-workspace/' .. project_name
 local mason_registry = require 'mason-registry'
