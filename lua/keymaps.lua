@@ -88,3 +88,5 @@ vim.keymap.set('n', '<leader>rC', crates.open_crates_io, { silent = true, desc =
 vim.keymap.set('n', '<leader>ave', '<cmd>silent !ansible-vault encrypt %<CR>', { desc = '[a]nsible-[v]ault [e]ncrypt' })
 vim.keymap.set('n', '<leader>avd', '<cmd>silent !ansible-vault decrypt %<CR>', { desc = '[a]nsible-[v]ault [d]ecrypt' })
 vim.keymap.set('n', '<leader>hv', '<cmd>silent !helm-vault -f ~/credentials/helm-vault-pass -i %<CR>', { desc = '[h]elm-[v]ault encrypt/decrypt' })
+
+vim.keymap.set('n', '<leader>i', '<cmd>CopilotChatToggle<CR>', { desc = 'A[i] prompt chat' })

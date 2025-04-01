@@ -142,3 +142,7 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>tS` - [t]est: [S]top
 - `<leader>tt` - [t]est: run [t]est file
 - `<leader>tT` - [t]est: run all [T]est files
+
+### copilot-chat plugin
+
+- `<leader>i` - A[i] prompt chat

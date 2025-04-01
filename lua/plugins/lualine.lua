@@ -29,7 +29,7 @@ return {
             separator = ' ',
           },
           -- LSP to ignore
-          ignore_lsp = { 'null-ls' },
+          ignore_lsp = { 'null-ls', 'copilot' },
         },
       },
     },
