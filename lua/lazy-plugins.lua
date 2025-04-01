@@ -21,6 +21,7 @@ require('lazy').setup({
   require 'plugins.lspconfig',
   require 'plugins.cmp',
   require 'plugins.conform',
+  require 'plugins.copilotchat',
   require 'plugins.todo-comments',
   require 'plugins.mini',
   require 'plugins.lualine',
