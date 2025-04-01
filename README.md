@@ -153,3 +153,7 @@ Note: `<leader>` is `space` in this configuration.
 ### todo-comments plugin
 
 - `]t` and `[t` - next/previous [t]odo in the buffer
+
+### copilot-chat plugin
+
+- `<leader>i` - A[i] prompt chat
