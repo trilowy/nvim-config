@@ -342,7 +342,7 @@ require('lazy').setup {
                 separator = ' ',
               },
               -- LSP to ignore
-              ignore_lsp = { 'null-ls', 'crates.nvim' },
+              ignore_lsp = { 'null-ls', 'crates.nvim', 'copilot' },
             },
           },
         },
@@ -613,6 +613,17 @@ require('lazy').setup {
       'mfussenegger/nvim-jdtls',
       ft = 'java',
     },
+
+    -- Copilot
+    -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
+    {
+      'CopilotC-Nvim/CopilotChat.nvim',
+      dependencies = {
+        { 'zbirenbaum/copilot.lua' },
+        { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+      },
+      opts = {},
+    },
   },
 }
 
@@ -868,3 +879,5 @@ vim.keymap.set(
   '<cmd>silent !~/software/kubectl/helm-vault -f ~/credentials/helm-vault-pass -i %<cr>',
   { desc = '[h]elm-[v]ault encrypt/decrypt' }
 )
+
+vim.keymap.set('n', '<leader>i', '<cmd>CopilotChatToggle<cr>', { desc = 'A[i] prompt chat' })
