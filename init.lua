@@ -639,6 +639,13 @@ require('crates').setup {
 -- See ftplugin/java.lua for the whole configuration
 vim.pack.add { 'https://github.com/mfussenegger/nvim-jdtls' }
 
+-- Copilot
+vim.pack.add {
+  'https://github.com/CopilotC-Nvim/CopilotChat.nvim',
+  -- Dependencies
+  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
+}
+
 -- =========
 -- || LSP ||
 -- =========
@@ -938,3 +945,5 @@ vim.keymap.set(
   '<cmd>silent !~/software/kubectl/helm-vault -f ~/credentials/helm-vault-pass -i %<cr>',
   { desc = '[h]elm-[v]ault encrypt/decrypt' }
 )
+
+vim.keymap.set('n', '<leader>i', '<cmd>CopilotChatToggle<cr>', { desc = 'A[i] prompt chat' })
