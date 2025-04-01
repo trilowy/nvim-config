@@ -2,6 +2,14 @@
 
 ## Installation
 
+Requires neovim >= 0.11
+
+Requires dependencies:
+- make
+- git
+- fd
+- ripgrep
+
 To clone with:
 ```sh
 git clone git@github.com:trilowy/nvim-config.git ~/.config/nvim/
@@ -15,25 +23,33 @@ Note: `<leader>` is `space` in this configuration.
 
 - `<leader>w` - [w]rite buffer
 - `<leader>c` - [c]lose buffer
-- `<leader>d` - hover [d]iagnostic
-- `<A-o>` - add empty line below
-- `<A-O>` - add empty line above
+- `gd` - LSP: [g]oto [d]efinition
+- `gr` - LSP: [g]oto [r]eferences
+- `gI` - LSP: [g]oto [I]mplementation
+- `gD` - LSP: [g]oto [D]eclaration
+- `gy` - LSP: [g]oto t[y]pe definition
+- `<leader>la` - [L]SP: code [a]ctions
+- `<leader>lh` - [L]SP: toggle inlay [h]ints
+- `<leader>lr` - [L]SP: [r]ename
+- `<leader>ls` - [L]SP: document [s]ymbols
+- `<leader>lS` - [L]SP: workspace [S]ymbols
+
+### oil.nvim plugin
+
+- `-` - open parent directory
 
 ### auto-session plugin
 
 - `<leader>se`- [s]earch s[e]ssion
 
-### nvim-cmp plugin
+### blink.cmp plugin
 
-- `<C-b>` and `<C-f>` - scroll the documentation window [b]ack/[f]orward
-- `<C-n>` and `<C-p>` - select the [n]ext/[p]revious item
-- `<C-i>` - accept ([i]nsert) the completion
-- `<C-Space>` - manually trigger a completion
-- `<C-l>` and `<C-h>` - move to the right/left of each of the expansion locations (function arguments)
-
-### conform.nvim plugin
-
-- `<leader>f` - [f]ormat buffer
+- `<c-b>` and `<c-f>` - scroll the documentation window [b]ack/[f]orward
+- `<c-n>` and `<c-p>` - select the [n]ext/[p]revious item
+- `<c-i>` - accept ([i]nsert) the completion
+- `<c-space>` - manually trigger a completion / toggle documentation
+- `<c-l>` and `<c-h>` - move to the right/left of each of the expansion locations (function arguments)
+- `<c-s>` - show signature
 
 ### crates.nvim plugin
 
@@ -54,11 +70,11 @@ Note: `<leader>` is `space` in this configuration.
 
 ### gitsigns.nvim plugin
 
-- `]c` and `[c` - git: next/previous [c]hange
+- `]g` and `[g` - [g]it: next/previous hunk
 - `<leader>ga` - [g]it: [a]dd hunk (stage)
 - `<leader>gA` - [g]it: [A]dd buffer (stage)
 - `<leader>gb` - [g]it: [b]ranches (`<C-t>` to track new remote branch)
-- `<leader>gB` - [g]it: [b]lame line
+- `<leader>gB` - [g]it: [b]lame
 - `<leader>gd` - [g]it: [d]iff against index
 - `<leader>gD` - [g]it: [D]iff against last commit
 - `<leader>ge` - [g]it: toggle git show d[e]leted
@@ -71,27 +87,12 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>gt` - [g]it: s[t]atus
 - `<leader>gT` - [g]it: [T]oggle show blame line
 
-### nvim-lspconfig plugin
+### nvim-jdtls plugin
 
-- `gd` - LSP: [g]oto [d]efinition
-- `gr` - LSP: [g]oto [r]eferences
-- `gI` - LSP: [g]oto [I]mplementation
-- `gD` - LSP: [g]oto [D]eclaration
-- `gy` - LSP: [g]oto t[y]pe definition
-- `<leader>la` - [L]SP: code [a]ctions
-- `<leader>lh` - [L]SP: toggle inlay [h]ints
-- `<leader>lr` - [L]SP: [r]ename
-- `<leader>ls` - [L]SP: document [s]ymbols
-- `<leader>lS` - [L]SP: workspace [S]ymbols
-- `<C-s>` - [L]SP: [s]ignature help
-
-### neo-tree.nvim plugin
-
-- `\` - NeoTree reveal
-
-### oil.nvim plugin
-
-- `-` - open parent directory
+- `<leader>jo` - [j]ava: [o]rganize imports
+- `<leader>jv` - [j]ava: extract [v]ariable
+- `<leader>jc` - [j]ava: extract [c]onstant
+- `<leader>jm` - [j]ava: extract [m]ethod
 
 ### telescope.nvim plugin
 
@@ -110,24 +111,18 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>st` - [s]earch [t]odo
 - `<leader>sw` - [s]earch current [w]ord
 
+### telescope-fzf-native.nvim plugin
+
+| Token     | Match type                 | Description                          |
+| --------- | -------------------------- | ------------------------------------ |
+| `sbtrkt`  | fuzzy-match                | Items that match `sbtrkt`            |
+| `'wild`   | exact-match (quoted)       | Items that include `wild`            |
+| `^music`  | prefix-exact-match         | Items that start with `music`        |
+| `.mp3$`   | suffix-exact-match         | Items that end with `.mp3`           |
+| `!fire`   | inverse-exact-match        | Items that do not include `fire`     |
+| `!^music` | inverse-prefix-exact-match | Items that do not start with `music` |
+| `!.mp3$`  | inverse-suffix-exact-match | Items that do not end with `.mp3`    |
+
 ### todo-comments plugin
 
 - `]t` and `[t` - next/previous [t]odo in the buffer
-
-### nvim-jdtls plugin
-
-- `<leader>jo` - [j]ava: [o]rganize imports
-- `<leader>jv` - [j]ava: extract [v]ariable
-- `<leader>jc` - [j]ava: extract [c]onstant
-- `<leader>jm` - [j]ava: extract [m]ethod
-
-### neotest plugin
-
-- `<leader>tl` - [t]est: run [l]ast test
-- `<leader>tn` - [t]est: run [n]earest
-- `<leader>to` - [t]est: show [o]utput
-- `<leader>tO` - [t]est: toggle [O]utput panel
-- `<leader>ts` - [t]est: toggle [s]ummary
-- `<leader>tS` - [t]est: [S]top
-- `<leader>tt` - [t]est: run [t]est file
-- `<leader>tT` - [t]est: run all [T]est files
