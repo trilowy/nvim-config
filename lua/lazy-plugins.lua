@@ -8,6 +8,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-fugitive', -- Git
   -- To see what colorschemes are installed: `:Telescope colorscheme`.
   require 'plugins.colorscheme-kanagawa',
   require 'plugins.colorscheme-tokyonight',
