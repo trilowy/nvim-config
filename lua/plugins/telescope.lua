@@ -42,7 +42,6 @@ return {
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[s]earch current [w]ord' })
 
     vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[g]it: [b]ranches' })
-    vim.keymap.set('n', '<leader>gf', builtin.git_bcommits, { desc = '[g]it: [f]ile commit history' })
     vim.keymap.set('n', '<leader>gh', builtin.git_commits, { desc = '[g]it: project commit [h]istory' })
     vim.keymap.set('n', '<leader>gs', builtin.git_stash, { desc = '[g]it: [s]tashes' })
     vim.keymap.set('n', '<leader>gt', builtin.git_status, { desc = '[g]it: s[t]atus' })

@@ -14,6 +14,7 @@ require('lazy').setup({
   require 'plugins.colorscheme-tokyonight',
   require 'plugins.colorscheme-nightfox',
   require 'plugins.gitsigns',
+  require 'plugins.diffview',
   require 'plugins.which-key',
   require 'plugins.telescope',
   require 'plugins.neo-tree',
