@@ -59,7 +59,7 @@ Note: `<leader>` is `space` in this configuration.
 
 ### gitsigns.nvim plugin
 
-- `]c` and `[c` - git: next/previous [c]hange
+- `]g` and `[g` - [g]it: next/previous hunk
 - `<leader>ga` - [g]it: [a]dd hunk (stage)
 - `<leader>gA` - [g]it: [A]dd buffer (stage)
 - `<leader>gb` - [g]it: [b]ranches (`<C-t>` to track new remote branch)

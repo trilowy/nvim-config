@@ -6,21 +6,21 @@ return {
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
 
-      vim.keymap.set('n', ']c', function()
+      vim.keymap.set('n', ']g', function()
         if vim.wo.diff then
-          vim.cmd.normal { ']c', bang = true }
+          vim.cmd.normal { ']g', bang = true }
         else
           gitsigns.nav_hunk 'next'
         end
-      end, { buffer = bufnr, desc = 'git: next [c]hange' })
+      end, { buffer = bufnr, desc = '[g]it: next hunk' })
 
-      vim.keymap.set('n', '[c', function()
+      vim.keymap.set('n', '[g', function()
         if vim.wo.diff then
-          vim.cmd.normal { '[c', bang = true }
+          vim.cmd.normal { '[g', bang = true }
         else
           gitsigns.nav_hunk 'prev'
         end
-      end, { buffer = bufnr, desc = 'git: previous [c]hange' })
+      end, { buffer = bufnr, desc = '[g]it: previous hunk' })
 
       vim.keymap.set('n', '<leader>ga', gitsigns.stage_hunk, { buffer = bufnr, desc = '[g]it: [a]dd hunk (stage)' })
       vim.keymap.set('v', '<leader>ga', function()
