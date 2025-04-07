@@ -1,10 +1,8 @@
--- Highlight todo, notes, etc in comments
+-- Navigate todos in comments
+-- https://github.com/folke/todo-comments.nvim
 return {
   'folke/todo-comments.nvim',
-  event = 'VimEnter',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-  },
+  dependencies = { 'nvim-lua/plenary.nvim' },
   opts = {
     signs = false,
     -- -- Options to search also in the code for Rust todo! macro

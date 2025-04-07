@@ -2,6 +2,14 @@
 
 ## Installation
 
+Requires neovim >= 0.10
+
+Requires dependencies:
+- make
+- git
+- fd
+- ripgrep
+
 To clone with:
 ```sh
 git clone git@github.com:trilowy/nvim-config.git ~/.config/nvim/
@@ -15,9 +23,6 @@ Note: `<leader>` is `space` in this configuration.
 
 - `<leader>w` - [w]rite buffer
 - `<leader>c` - [c]lose buffer
-- `<leader>d` - hover [d]iagnostic
-- `<A-o>` - add empty line below
-- `<A-O>` - add empty line above
 
 ### auto-session plugin
 
@@ -25,11 +30,11 @@ Note: `<leader>` is `space` in this configuration.
 
 ### nvim-cmp plugin
 
-- `<C-b>` and `<C-f>` - scroll the documentation window [b]ack/[f]orward
-- `<C-n>` and `<C-p>` - select the [n]ext/[p]revious item
-- `<C-i>` - accept ([i]nsert) the completion
-- `<C-Space>` - manually trigger a completion
-- `<C-l>` and `<C-h>` - move to the right/left of each of the expansion locations (function arguments)
+- `<c-b>` and `<c-f>` - scroll the documentation window [b]ack/[f]orward
+- `<c-n>` and `<c-p>` - select the [n]ext/[p]revious item
+- `<c-i>` - accept ([i]nsert) the completion
+- `<c-space>` - manually trigger a completion
+- `<c-l>` and `<c-h>` - move to the right/left of each of the expansion locations (function arguments)
 
 ### conform.nvim plugin
 
@@ -83,7 +88,7 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>lr` - [L]SP: [r]ename
 - `<leader>ls` - [L]SP: document [s]ymbols
 - `<leader>lS` - [L]SP: workspace [S]ymbols
-- `<C-s>` - [L]SP: [s]ignature help
+- `<c-s>` - [L]SP: [s]ignature help
 
 ### neo-tree.nvim plugin
 

@@ -1,3 +1,4 @@
+-- LSP for Rust crates
 return {
   'nvimtools/none-ls.nvim',
   dependencies = {

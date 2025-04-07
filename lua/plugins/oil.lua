@@ -1,16 +1,11 @@
--- File/dir tree edition
+-- Directory edition
+-- https://github.com/stevearc/oil.nvim
 return {
   'stevearc/oil.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-  lazy = false,
-  config = function()
-    require('oil').setup {
-      view_options = {
-        show_hidden = true,
-      },
-    }
-
-    vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
-  end,
+  dependencies = { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+  opts = {
+    view_options = {
+      show_hidden = true,
+    },
+  },
 }
