@@ -5,7 +5,9 @@ local jdtls_path = mason_registry.get_package('jdtls'):get_install_path()
 
 -- Determine OS
 local os
-if vim.fn.has 'windows' == 1 then
+if vim.fn.has 'wsl' == 1 then
+  os = 'linux'
+elseif vim.fn.has 'windows' == 1 then
   os = 'win'
 elseif vim.fn.has 'unix' == 1 then
   os = 'linux'
