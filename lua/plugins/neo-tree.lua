@@ -1,3 +1,5 @@
+-- Tree directory edition
+-- https://github.com/nvim-neo-tree/neo-tree.nvim
 return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
@@ -8,7 +10,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree position=float reveal<CR>', { desc = 'NeoTree reveal' } },
+    { '\\', ':Neotree position=float reveal<cr>', { desc = 'NeoTree reveal' } },
   },
   opts = {
     filesystem = {

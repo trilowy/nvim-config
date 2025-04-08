@@ -249,12 +249,12 @@ config.capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.proto
 -- or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)
 
-vim.keymap.set('n', '<leader>jo', "<Cmd>lua require'jdtls'.organize_imports()<CR>", { desc = '[j]ava: [o]rganize imports' })
-vim.keymap.set('n', '<leader>jv', "<Cmd>lua require('jdtls').extract_variable()<CR>", { desc = '[j]ava: extract [v]ariable' })
-vim.keymap.set('v', '<leader>jv', "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", { desc = '[j]ava: extract [v]ariable' })
-vim.keymap.set('n', '<leader>jc', "<Cmd>lua require('jdtls').extract_constant()<CR>", { desc = '[j]ava: extract [c]onstant' })
-vim.keymap.set('v', '<leader>jc', "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", { desc = '[j]ava: extract [c]onstant' })
-vim.keymap.set('v', '<leader>jm', "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", { desc = '[j]ava: extract [m]ethod' })
+vim.keymap.set('n', '<leader>jo', "<cmd>lua require'jdtls'.organize_imports()<cr>", { desc = '[j]ava: [o]rganize imports' })
+vim.keymap.set('n', '<leader>jv', "<cmd>lua require('jdtls').extract_variable()<cr>", { desc = '[j]ava: extract [v]ariable' })
+vim.keymap.set('v', '<leader>jv', "<esc><cmd>lua require('jdtls').extract_variable(true)<cr>", { desc = '[j]ava: extract [v]ariable' })
+vim.keymap.set('n', '<leader>jc', "<cmd>lua require('jdtls').extract_constant()<cr>", { desc = '[j]ava: extract [c]onstant' })
+vim.keymap.set('v', '<leader>jc', "<esc><cmd>lua require('jdtls').extract_constant(true)<cr>", { desc = '[j]ava: extract [c]onstant' })
+vim.keymap.set('v', '<leader>jm', "<esc><cmd>lua require('jdtls').extract_method(true)<cr>", { desc = '[j]ava: extract [m]ethod' })
 
 -- Add header snippet
 local ls = require 'luasnip'
