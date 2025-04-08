@@ -9,6 +9,27 @@ return {
         {
           'filename',
           path = 1,
+          symbols = {
+            modified = '•',
+            readonly = '🔒',
+          },
+        },
+      },
+      lualine_x = {
+        'encoding',
+        'fileformat',
+        'filetype',
+        {
+          'lsp_status',
+          icon = '',
+          symbols = {
+            spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+            done = '✓',
+            -- Delimiter inserted between LSP names
+            separator = ' ',
+          },
+          -- LSP to ignore
+          ignore_lsp = { 'null-ls' },
         },
       },
     },
@@ -17,6 +38,10 @@ return {
         {
           'filename',
           path = 1,
+          symbols = {
+            modified = '•',
+            readonly = '🔒',
+          },
         },
       },
     },

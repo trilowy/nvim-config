@@ -4,7 +4,7 @@ return {
     { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    { 'j-hui/fidget.nvim', opts = {} }, -- Useful status updates for LSP
+    -- { 'j-hui/fidget.nvim', opts = {} }, -- Useful status updates for LSP
     { 'folke/lazydev.nvim', ft = 'lua', opts = {} }, -- Neovim config LSP
   },
   config = function()
