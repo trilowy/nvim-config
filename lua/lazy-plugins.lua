@@ -27,8 +27,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   -- Colorscheme that will be used when installing plugins
   install = { colorscheme = { 'habamax' } },
-  -- Automatically check for plugin updates
-  checker = { enabled = true },
   -- Icons if nerd font
   ui = {
     icons = vim.g.have_nerd_font and {} or {
