@@ -10,7 +10,7 @@ return {
           'filename',
           path = 1,
           symbols = {
-            modified = '•',
+            modified = '⬤',
             readonly = '🔒',
           },
         },
@@ -39,7 +39,7 @@ return {
           'filename',
           path = 1,
           symbols = {
-            modified = '•',
+            modified = '⬤',
             readonly = '🔒',
           },
         },
