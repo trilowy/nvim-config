@@ -82,5 +82,5 @@ vim.opt.updatetime = 500
 -- Decrease mapped sequence wait time to display which-key popup sooner
 vim.opt.timeoutlen = 300
 
--- For auto save/restore of sessions
+-- For auto save/restore of sessions with auto-session
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'

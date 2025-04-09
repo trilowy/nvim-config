@@ -6,7 +6,6 @@ return {
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
 
-      -- Navigation
       vim.keymap.set('n', ']c', function()
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }
@@ -23,14 +22,13 @@ return {
         end
       end, { buffer = bufnr, desc = 'git: previous [c]hange' })
 
-      -- Actions
       vim.keymap.set('n', '<leader>ga', gitsigns.stage_hunk, { buffer = bufnr, desc = '[g]it: [a]dd hunk (stage)' })
       vim.keymap.set('v', '<leader>ga', function()
         gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
       end, { buffer = bufnr, desc = '[g]it: [a]dd hunk (stage)' })
       vim.keymap.set('n', '<leader>gA', gitsigns.stage_buffer, { buffer = bufnr, desc = '[g]it: [A]dd buffer (stage)' })
 
-      vim.keymap.set('n', '<leader>gB', gitsigns.blame_line, { buffer = bufnr, desc = '[g]it: [b]lame line' })
+      vim.keymap.set('n', '<leader>gB', gitsigns.blame, { buffer = bufnr, desc = '[g]it: [b]lame' })
 
       vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { buffer = bufnr, desc = '[g]it: [d]iff against index' })
       vim.keymap.set('n', '<leader>gD', function()

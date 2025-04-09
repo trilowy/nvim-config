@@ -3,6 +3,7 @@
 return {
   'stevearc/oil.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+  lazy = false,
   opts = {
     view_options = {
       show_hidden = true,

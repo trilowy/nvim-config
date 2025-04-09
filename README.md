@@ -63,7 +63,7 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>ga` - [g]it: [a]dd hunk (stage)
 - `<leader>gA` - [g]it: [A]dd buffer (stage)
 - `<leader>gb` - [g]it: [b]ranches (`<C-t>` to track new remote branch)
-- `<leader>gB` - [g]it: [b]lame line
+- `<leader>gB` - [g]it: [b]lame
 - `<leader>gd` - [g]it: [d]iff against index
 - `<leader>gD` - [g]it: [D]iff against last commit
 - `<leader>ge` - [g]it: toggle git show d[e]leted
