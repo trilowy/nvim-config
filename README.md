@@ -66,11 +66,12 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>gA` - [g]it: [A]dd buffer (stage)
 - `<leader>gb` - [g]it: [b]ranches (`<C-t>` to track new remote branch)
 - `<leader>gB` - [g]it: [b]lame
-- `<leader>gd` - [g]it: [d]iff against index
+- `<leader>gd` - [g]it: [d]iff view
 - `<leader>gD` - [g]it: [D]iff against last commit
 - `<leader>ge` - [g]it: toggle git show d[e]leted
 - `<leader>gf` - [g]it: [f]ile commit history
 - `<leader>gh` - [g]it: project commit [h]istory
+- `<leader>gi` - [g]it: d[i]ff against index
 - `<leader>gp` - [g]it: [p]review hunk
 - `<leader>gr` - [g]it: [r]eset hunk
 - `<leader>gR` - [g]it: [R]eset buffer

@@ -30,7 +30,7 @@ return {
 
       vim.keymap.set('n', '<leader>gB', gitsigns.blame, { buffer = bufnr, desc = '[g]it: [b]lame' })
 
-      vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { buffer = bufnr, desc = '[g]it: [d]iff against index' })
+      vim.keymap.set('n', '<leader>gi', gitsigns.diffthis, { buffer = bufnr, desc = '[g]it: d[i]ff against index' })
       vim.keymap.set('n', '<leader>gD', function()
         gitsigns.diffthis '@'
       end, { buffer = bufnr, desc = '[g]it: [D]iff against last commit' })

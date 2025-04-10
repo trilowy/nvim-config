@@ -36,7 +36,8 @@ vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = '[s]earch [
 vim.keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[s]earch current [w]ord' })
 
 vim.keymap.set('n', '<leader>gb', telescope.git_branches, { desc = '[g]it: [b]ranches' })
-vim.keymap.set('n', '<leader>gf', telescope.git_bcommits, { desc = '[g]it: [f]ile commit history' })
+vim.keymap.set('n', '<leader>gd', '<cmd>DiffviewOpen<cr>', { desc = '[g]it: [d]iff view' })
+vim.keymap.set('n', '<leader>gf', '<cmd>DiffviewFileHistory<cr>', { desc = '[g]it: [f]ile commit history' })
 vim.keymap.set('n', '<leader>gh', telescope.git_commits, { desc = '[g]it: project commit [h]istory' })
 vim.keymap.set('n', '<leader>gs', telescope.git_stash, { desc = '[g]it: [s]tashes' })
 vim.keymap.set('n', '<leader>gt', telescope.git_status, { desc = '[g]it: s[t]atus' })

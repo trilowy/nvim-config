@@ -56,6 +56,7 @@ require('lazy').setup {
     require 'plugins.colorscheme-onedark',
     require 'plugins.gitsigns',
     require 'plugins.flog',
+    require 'plugins.diffview',
     require 'plugins.which-key',
     require 'plugins.telescope',
     require 'plugins.neo-tree',
