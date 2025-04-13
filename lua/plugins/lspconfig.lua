@@ -62,7 +62,14 @@ return {
 
     local servers = {
       taplo = {},
-      tailwindcss = {},
+      tailwindcss = {
+        filetypes = { 'html', 'css', 'rust' },
+        init_options = {
+          userLanguages = {
+            rust = 'html',
+          },
+        },
+      },
       -- htmx = {},
       -- ts_ls = {},
       svelte = {},
