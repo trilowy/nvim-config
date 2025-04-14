@@ -205,6 +205,7 @@ require('kanagawa').setup {
 -- Neovim default habamax, slate, unokai, wildcharm and sorbet are also nice, maybe zellner for Java
 vim.cmd.colorscheme 'kanagawa-wave'
 
+-- TODO: other colorscheme?
 -- Light colorscheme for work
 -- vim.pack.add { 'https://github.com/navarasu/onedark.nvim' }
 
@@ -216,8 +217,10 @@ vim.cmd.colorscheme 'kanagawa-wave'
 -- Simple colorscheme to highlight what’s essential
 -- vim.pack.add { 'https://github.com/p00f/alabaster.nvim' }
 
--- TODO: other colorscheme?
--- vim.pack.add { 'https://github.com/EdenEast/nightfox.nvim' }
+-- vim.pack.add { 'https://github.com/EdenEast/nightfox.nvim' } -- dawnfox as light colorscheme
+
+-- require('nightfox').setup()
+
 -- vim.pack.add { 'https://github.com/folke/tokyonight.nvim' }
 
 -- Directory edition
