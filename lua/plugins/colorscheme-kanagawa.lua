@@ -2,13 +2,13 @@
 -- https://github.com/rebelot/kanagawa.nvim
 return {
   'rebelot/kanagawa.nvim',
-  priority = 1000,
-  init = function()
-    vim.cmd.colorscheme 'kanagawa-wave'
-
-    -- Configure highlights
-    vim.cmd.hi 'Comment gui=none'
-  end,
+  -- priority = 1000,
+  -- init = function()
+  --   vim.cmd.colorscheme 'kanagawa-wave'
+  --
+  --   -- Configure highlights
+  --   vim.cmd.hi 'Comment gui=none'
+  -- end,
   opts = {
     colors = {
       palette = {
