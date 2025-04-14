@@ -151,10 +151,6 @@ require('lazy').setup {
     -- https://github.com/rebelot/kanagawa.nvim
     {
       'rebelot/kanagawa.nvim',
-      priority = 1000,
-      init = function()
-        vim.cmd.colorscheme 'kanagawa-wave'
-      end,
       opts = {
         colors = {
           palette = {
@@ -201,6 +197,15 @@ require('lazy').setup {
         style = 'light',
       },
     },
+    -- https://github.com/EdenEast/nightfox.nvim
+    {
+      'EdenEast/nightfox.nvim',
+      priority = 1000,
+      init = function()
+        vim.cmd.colorscheme 'dawnfox'
+      end,
+      opts = {},
+    },
 
     -- Simple colorscheme to highlight what’s essential
     -- https://github.com/p00f/alabaster.nvim
@@ -213,8 +218,6 @@ require('lazy').setup {
     },
 
     -- TODO: other colorscheme?
-    -- https://github.com/EdenEast/nightfox.nvim
-    -- 'EdenEast/nightfox.nvim',
     -- https://github.com/folke/tokyonight.nvim
     -- 'folke/tokyonight.nvim',
 
