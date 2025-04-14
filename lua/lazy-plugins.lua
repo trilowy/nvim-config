@@ -54,6 +54,7 @@ require('lazy').setup {
     require 'plugins.colorscheme-kanagawa',
     require 'plugins.colorscheme-tokyonight',
     require 'plugins.colorscheme-nightfox',
+    require 'plugins.colorscheme-onedark',
     require 'plugins.gitsigns',
     require 'plugins.which-key',
     require 'plugins.telescope',
