@@ -5,6 +5,7 @@ vim.keymap.set('n', '[q', '<cmd>cprev<cr>', { desc = 'previous [q]uickfix' })
 vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>', { desc = 'clear highlight on search' })
 vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'open parent directory' })
 vim.keymap.set('t', '<esc><esc>', '<C-\\><C-n>', { desc = 'exit terminal mode' })
+vim.keymap.set('n', '<leader>gg', '<cmd>Flog -all<cr>', { desc = '[g]it: [g]raph' })
 
 vim.keymap.set('n', ']t', function()
   require('todo-comments').jump_next()

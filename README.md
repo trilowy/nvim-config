@@ -78,6 +78,10 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>gt` - [g]it: s[t]atus
 - `<leader>gT` - [g]it: [T]oggle show blame line
 
+### vim-flog plugin
+
+- `<leader>gg` - [g]it: [g]raph
+
 ### nvim-lspconfig plugin
 
 - `gd` - LSP: [g]oto [d]efinition

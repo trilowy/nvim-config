@@ -49,13 +49,13 @@ require('lazy').setup {
   -- Plugins to install
   spec = {
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-    'tpope/vim-fugitive', -- Git
     -- To see what colorschemes are installed: `:Telescope colorscheme`.
     require 'plugins.colorscheme-kanagawa',
     require 'plugins.colorscheme-tokyonight',
     require 'plugins.colorscheme-nightfox',
     require 'plugins.colorscheme-onedark',
     require 'plugins.gitsigns',
+    require 'plugins.flog',
     require 'plugins.which-key',
     require 'plugins.telescope',
     require 'plugins.neo-tree',
