@@ -1,5 +1,7 @@
 vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = '[w]rite buffer' })
 vim.keymap.set('n', '<leader>c', '<cmd>bd<cr>', { desc = '[c]lose buffer' })
+vim.keymap.set('n', ']q', '<cmd>cnext<cr>', { desc = 'next [q]uickfix' })
+vim.keymap.set('n', '[q', '<cmd>cprev<cr>', { desc = 'previous [q]uickfix' })
 vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>', { desc = 'clear highlight on search' })
 vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'open parent directory' })
 vim.keymap.set('t', '<esc><esc>', '<C-\\><C-n>', { desc = 'exit terminal mode' })

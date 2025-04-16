@@ -23,6 +23,8 @@ Note: `<leader>` is `space` in this configuration.
 
 - `<leader>w` - [w]rite buffer
 - `<leader>c` - [c]lose buffer
+- `]q` - next [q]uickfix
+- `[q` - previous [q]uickfix
 
 ### auto-session plugin
 
