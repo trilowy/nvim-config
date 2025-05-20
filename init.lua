@@ -361,10 +361,6 @@ require('lazy').setup {
       end,
     },
 
-    -- Neovim config LSP
-    -- https://github.com/folke/lazydev.nvim
-    { 'folke/lazydev.nvim', ft = 'lua', opts = {} },
-
     -- Better autocompletion (LSP, snippets, path)
     -- https://cmp.saghen.dev/
     {
@@ -380,8 +376,6 @@ require('lazy').setup {
         },
       },
       version = '1.*',
-      ---@module 'blink.cmp'
-      ---@type blink.cmp.Config
       opts = {
         keymap = {
           ['<c-i>'] = { 'select_and_accept' },
@@ -391,14 +385,7 @@ require('lazy').setup {
         },
         completion = { documentation = { auto_show = true } },
         sources = {
-          default = { 'lsp', 'path', 'snippets', 'lazydev', 'buffer' },
-          providers = {
-            lazydev = {
-              name = 'LazyDev',
-              module = 'lazydev.integrations.blink',
-              score_offset = 100,
-            },
-          },
+          default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
         snippets = { preset = 'luasnip' },
         -- Shows a signature help window while you type arguments for a function
@@ -552,8 +539,6 @@ require('lazy').setup {
       keys = {
         { '<leader>se', '<cmd>SessionSearch<cr>', desc = '[s]earch s[e]ssion' },
       },
-      ---@module "auto-session"
-      ---@type AutoSession.Config
       opts = {},
     },
 
