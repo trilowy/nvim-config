@@ -247,7 +247,7 @@ local config = {
 }
 
 -- Add autocomplete of function parameters
-config.capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+config.capabilities = require('blink.cmp').get_lsp_capabilities()
 
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
