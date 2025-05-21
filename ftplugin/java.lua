@@ -3,8 +3,7 @@
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.fn.stdpath 'data' .. '/jdtls-workspace/' .. project_name
-local mason_registry = require 'mason-registry'
-local jdtls_path = mason_registry.get_package('jdtls'):get_install_path()
+local jdtls_path = vim.fn.expand '$MASON/packages/jdtls/'
 
 -- Determine OS
 local os
