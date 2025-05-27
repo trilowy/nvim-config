@@ -122,6 +122,8 @@ local config = {
           'org.springframework.test.web.servlet.result.MockMvcResultHandlers.*',
           'org.hamcrest.Matchers.*',
           'org.hamcrest.CoreMatchers.*',
+          'io.gatling.javaapi.core.CoreDsl.*',
+          'io.gatling.javaapi.http.HttpDsl.*',
         },
         filteredTypes = {
           'com.sun.*',
