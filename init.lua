@@ -206,29 +206,28 @@ require('lazy').setup {
 
     -- Tree directory edition
     -- https://github.com/nvim-neo-tree/neo-tree.nvim
-    -- TODO: see if needed
-    -- {
-    --   'nvim-neo-tree/neo-tree.nvim',
-    --   branch = 'v3.x',
-    --   dependencies = {
-    --     'nvim-lua/plenary.nvim',
-    --     'nvim-tree/nvim-web-devicons',
-    --     'MunifTanjim/nui.nvim',
-    --   },
-    --   cmd = 'Neotree',
-    --   keys = {
-    --     { '\\', ':Neotree position=float reveal<cr>', { desc = 'NeoTree reveal' } },
-    --   },
-    --   opts = {
-    --     filesystem = {
-    --       window = {
-    --         mappings = {
-    --           ['\\'] = 'close_window',
-    --         },
-    --       },
-    --     },
-    --   },
-    -- },
+    {
+      'nvim-neo-tree/neo-tree.nvim',
+      branch = 'v3.x',
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        'nvim-tree/nvim-web-devicons',
+        'MunifTanjim/nui.nvim',
+      },
+      cmd = 'Neotree',
+      keys = {
+        { '\\', ':Neotree position=float reveal<cr>', { desc = 'NeoTree reveal' } },
+      },
+      opts = {
+        filesystem = {
+          window = {
+            mappings = {
+              ['\\'] = 'close_window',
+            },
+          },
+        },
+      },
+    },
 
     -- Automatically change root dir to the project of the current buffer
     -- https://github.com/notjedi/nvim-rooter.lua
