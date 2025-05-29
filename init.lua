@@ -98,9 +98,9 @@ vim.cmd.colorscheme 'habamax'
 -- Diagnostics
 vim.diagnostic.config {
   -- Show them inline
-  -- virtual_text = true,
+  virtual_text = true,
   -- Show them with underline and arrow like Rust compiler
-  virtual_lines = true,
+  -- virtual_lines = true,
 }
 
 -- Open a menu for auto-completion, even if there is only one choice but do not insert if not accepted
