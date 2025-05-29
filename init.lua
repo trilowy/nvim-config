@@ -686,14 +686,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end
 
     -- Inlay hints
-    if client.supports_method 'inlayHint/resolve' then
+    if client.server_capabilities.inlayHintProvider then
       vim.keymap.set('n', '<leader>lh', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
       end, { buffer = event.buf, desc = '[L]SP: toggle inlay [h]ints' })
     end
 
     -- Highlight references of the word under the cursor
-    if client.supports_method 'textDocument/documentHighlight' then
+    if client.server_capabilities.documentHighlightProvider then
       local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
         buffer = event.buf,
