@@ -652,7 +652,7 @@ vim.lsp.config('*', {
 })
 
 vim.lsp.enable {
-  -- 'gleam',
+  'gleam',
   'lua',
   'rust',
   'toml',
