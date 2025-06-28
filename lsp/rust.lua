@@ -6,7 +6,7 @@ return {
   filetypes = { 'rust' },
   settings = {
     ['rust-analyzer'] = {
-      checkOnSave = {
+      check = {
         command = 'clippy',
       },
     },
