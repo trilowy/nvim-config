@@ -633,6 +633,7 @@ require('mason-tool-installer').setup {
     'jdtls', -- Java: started in ftplugin/java.lua
     'taplo', -- TOML
     'html-lsp',
+    'kotlin-lsp',
     -- 'tailwindcss-language-server',
     -- Formatter
     'stylua',
@@ -657,6 +658,7 @@ vim.lsp.enable {
   'rust',
   'toml',
   'html',
+  'kotlin',
   -- 'tailwindcss',
   'zig',
 }
