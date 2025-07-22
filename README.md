@@ -70,28 +70,43 @@ Note: `<leader>` is `space` in this configuration.
 - `<leader>rD` - [r]ust crates: [D]ocumentation
 - `<leader>rC` - [r]ust crates: open [C]rates.io
 
-### gitsigns.nvim plugin
+### telescope.nvim, gitsigns.nvim and vim-flog plugins
 
-- `]g` and `[g` - [g]it: next/previous hunk
-- `<leader>ga` - [g]it: [a]dd hunk (stage)
-- `<leader>gA` - [g]it: [A]dd buffer (stage)
-- `<leader>gb` - [g]it: [b]ranches (`<C-t>` to track new remote branch)
-- `<leader>gB` - [g]it: [b]lame
-- `<leader>gd` - [g]it: [d]iff against index
-- `<leader>gD` - [g]it: [D]iff against last commit
-- `<leader>ge` - [g]it: toggle git show d[e]leted
+- `<leader>gb` - [g]it: [b]ranches
+  - `<cr>` - checks out the currently selected branch
+  - `<c-t>` - tracks currently selected branch
+  - `<c-r>` - rebases currently selected branch
+  - `<c-a>` - creates a new branch, with confirmation prompt before creation
+  - `<c-d>` - deletes the currently selected branch, with confirmation prompt before deletion
+  - `<c-y>` - merges the currently selected branch, with confirmation prompt before deletion
+- `<leader>gB` - [g]it: [B]lame
+- `<leader>gc` - [g]it: [c]lose diff view
 - `<leader>gf` - [g]it: [f]ile commit history
+- `<leader>gg` - [g]it: status or conflict resolution
+  - `<tab>` - Open the diff for the next file
+  - `<s-tab>` - Open the diff for the previous file
+  - `[F` - Open the diff for the first file
+  - `]F` - Open the diff for the last file
+  - `gf` - Open the file in the previous tabpage
+  - `<C-w><C-f>` - Open the file in a new split
+  - `<C-w>gf` - Open the file in a new tabpage
+  - `<leader>e` - Bring focus to the file panel
+  - `<leader>b` - Toggle the file panel.
+  - `g<C-x>` - Cycle through available layouts.
+  - `[x` - In the merge-tool: jump to the previous conflict
+  - `]x` - In the merge-tool: jump to the next conflict
+  - `<leader>Co` - Choose the OURS version of a conflict
+  - `<leader>Ct` - Choose the THEIRS version of a conflict
+  - `<leader>Cb` - Choose the BASE version of a conflict
+  - `<leader>Ca` - Choose all the versions of a conflict
+  - `dx` - Delete the conflict re<leader>Cion
+  - `<leader>CO` - Choose the OURS version of a conflict for the whole file
+  - `<leader>CT` - Choose the THEIRS version of a conflict for the whole file
+  - `<leader>CB` - Choose the BASE version of a conflict for the whole file
+  - `<leader>CA` - Choose all the versions of a conflict for the whole file
+  - `dX` - Delete the conflict re<leader>Cion for the whole file
 - `<leader>gh` - [g]it: project commit [h]istory
-- `<leader>gp` - [g]it: [p]review hunk
-- `<leader>gr` - [g]it: [r]eset hunk
-- `<leader>gR` - [g]it: [R]eset buffer
-- `<leader>gs` - [g]it: [s]tashes
-- `<leader>gt` - [g]it: s[t]atus
-- `<leader>gT` - [g]it: [T]oggle show blame line
-
-### vim-flog plugin
-
-- `<leader>gg` - [g]it: [g]raph
+- `<leader>gl` - [g]it: [l]og
 
 ### nvim-jdtls plugin
 

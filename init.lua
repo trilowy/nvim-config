@@ -421,106 +421,64 @@ require('lazy').setup {
       },
     },
 
-    -- Git integration
-    -- https://github.com/lewis6991/gitsigns.nvim
-    -- TODO: redo keymap with help of documentation
+    -- TODO: Git
     -- What I need:
-    -- - [ ] Change branch
-    -- - [ ] Change to new branch
-    -- - [ ] Branch graph
-    -- - [ ] Delete local branch
-    -- - [ ] Delete upstream branch
-    -- - [ ] See all changes in workspace/index: with a 2 views
+    -- - [x] Change branch (<leader>gb and <c-t> to track new remote branch)
+    -- - [x] Change to new branch (<leader>gb and <c-a> to create new branch)
+    -- - [x] Branch graph (<leader>gl)
+    -- - [x] Delete local branch (<leader>gb and <c-d> to delete branch)
+    -- - [x] Delete upstream branch (command line)
+    -- - [x] See all changes in workspace/index: with a 2 views (<leader>gg)
     -- - [ ] Add only some chars to index
-    -- - [ ] Pull
-    -- - [ ] Fetch
-    -- - [ ] Commit
-    -- - [ ] Push
-    -- - [ ] Push force-with-lease
-    -- - [ ] Stash
+    -- - [x] Pull (command line)
+    -- - [x] Fetch (command line)
+    -- - [x] Commit (command line)
+    -- - [x] Push (command line)
+    -- - [x] Push force-with-lease (command line)
     -- - [ ] Squash
     -- - [ ] Fixup
     -- - [ ] Reword
-    -- - [ ] Rebase onto another branch
+    -- - [x] Rebase onto another branch (<leader>gb and <c-r> to rebase)
     -- - [ ] Rebase interactive
-    -- - [ ] Merge a branch
-    -- - [ ] Conflict resolution: maybe 3 views instead of 2
+    -- - [x] Merge a branch (<leader>gb and <c-y> to merge)
+    -- - [x] Conflict resolution (<leader>gg)
     -- - [x] Git blame a file (<leader>gB)
-    -- - [ ] Git blame: see what changed
-    -- - [ ] History on a file
+    -- - [x] Git blame: see what changed
+    -- - [x] History on a file (<leader>gf)
     -- - [ ] Gitlab MR review?
     -- - [ ] Create tag?
     -- - [ ] Delete tag?
-    {
-      'lewis6991/gitsigns.nvim',
-      opts = {
-        on_attach = function(bufnr)
-          local gitsigns = require 'gitsigns'
+    -- - [ ] Stash?
 
-          vim.keymap.set('n', ']g', function()
-            if vim.wo.diff then
-              vim.cmd.normal { ']g', bang = true }
-            else
-              gitsigns.nav_hunk 'next'
-            end
-          end, { buffer = bufnr, desc = '[g]it: next hunk' })
+    -- TODO: learn diff-mode
+    -- Familiarize Yourself With :h diff-mode
+    -- This plugin assumes you're familiar with all the features already provided by nvim's builtin diff-mode. These features include:
+    -- - Jumping between hunks (:h jumpto-diffs).
+    -- - Applying the changes of a diff hunk from any of the diffed buffers (:h copy-diffs).
+    -- For more information on the merge tool, mappings, layouts and how to configure them, see: :h diffview-merge-tool
 
-          vim.keymap.set('n', '[g', function()
-            if vim.wo.diff then
-              vim.cmd.normal { '[g', bang = true }
-            else
-              gitsigns.nav_hunk 'prev'
-            end
-          end, { buffer = bufnr, desc = '[g]it: previous hunk' })
+    -- TODO: learn fugitive/git command to amend a commit
+    -- https://github.com/tpope/vim-fugitive?tab=readme-ov-file#screencasts
 
-          vim.keymap.set('n', '<leader>ga', gitsigns.stage_hunk, { buffer = bufnr, desc = '[g]it: [a]dd hunk (stage)' })
-          vim.keymap.set('v', '<leader>ga', function()
-            gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-          end, { buffer = bufnr, desc = '[g]it: [a]dd hunk (stage)' })
-          vim.keymap.set('n', '<leader>gA', gitsigns.stage_buffer, { buffer = bufnr, desc = '[g]it: [A]dd buffer (stage)' })
+    -- Git integration
+    -- https://github.com/lewis6991/gitsigns.nvim
+    'lewis6991/gitsigns.nvim',
 
-          vim.keymap.set('n', '<leader>gB', gitsigns.blame, { buffer = bufnr, desc = '[g]it: [B]lame' })
+    -- Git
+    -- https://github.com/tpope/vim-fugitive
+    'tpope/vim-fugitive',
 
-          vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { buffer = bufnr, desc = '[g]it: [d]iff against index' })
-          vim.keymap.set('n', '<leader>gD', function()
-            gitsigns.diffthis '@'
-          end, { buffer = bufnr, desc = '[g]it: [D]iff against last commit' })
+    -- Fugitive Github integration
+    -- https://github.com/tpope/vim-rhubarb
+    'tpope/vim-rhubarb',
 
-          vim.keymap.set('n', '<leader>ge', gitsigns.preview_hunk_inline, { buffer = bufnr, desc = '[g]it: toggle git show d[e]leted' })
-          vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { buffer = bufnr, desc = '[g]it: [p]review hunk' })
-
-          vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { buffer = bufnr, desc = '[g]it: [r]eset hunk' })
-          vim.keymap.set('v', '<leader>gr', function()
-            gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-          end, { buffer = bufnr, desc = '[g]it: [r]eset hunk' })
-          vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { buffer = bufnr, desc = '[g]it: [R]eset buffer' })
-
-          vim.keymap.set('n', '<leader>gT', gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = '[g]it: [T]oggle show blame line' })
-        end,
-      },
-    },
-
-    -- TODO: Git
-    -- Fugitive:
-    -- - https://github.com/tpope/vim-fugitive
-    -- - https://www.reddit.com/r/neovim/comments/1h8aekd/vimfugitive_is_just_a_superior_way_to_manage_your/
-    -- - Conflicts: https://www.youtube.com/watch?v=vpwJ7fqD1CE
-    -- - https://www.reddit.com/r/neovim/comments/1h8aekd/comment/m13ry0k/
-    --   - cF fixup commit
-    --   - dv over the file which just shows native neovim diff over 2 files
-    -- DiffView:
-    -- - https://github.com/sindrets/diffview.nvim
-    -- - Example: https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lua/plugins/diffview.lua
-    -- - https://www.reddit.com/r/neovim/comments/16xa2q0/what_is_the_best_git_diff_and_merge_tool/
-    -- LazyGit:
-    -- - https://github.com/folke/snacks.nvim/blob/main/docs%2Flazygit.md
-    -- NeoGit:
-    -- - https://github.com/NeogitOrg/neogit
-    -- Gitlab MR: https://docs.gitlab.com/editor_extensions/neovim/
+    -- Fugitive Gitlab integration
+    -- https://github.com/shumphrey/fugitive-gitlab.vim
+    'shumphrey/fugitive-gitlab.vim',
 
     -- Git graph
     -- https://github.com/rbong/vim-flog
-    -- TODO: to configure
+    -- TODO: to configure and learn
     {
       'rbong/vim-flog',
       lazy = true,
@@ -530,9 +488,34 @@ require('lazy').setup {
       },
     },
 
-    -- TODO: Compare 2 files (not necessarly git changes)
-    -- :diffthis on 2 windows
-    -- Better diffview
+    -- See Git changes and resolve conflicts
+    -- https://github.com/sindrets/diffview.nvim
+    {
+      'sindrets/diffview.nvim',
+      opts = function()
+        local actions = require 'diffview.actions'
+
+        return {
+          view = {
+            merge_tool = {
+              layout = 'diff4_mixed',
+            },
+          },
+          keymaps = {
+            view = {
+              { 'n', '<leader>Co', actions.conflict_choose 'ours', { desc = 'Choose the OURS version of a conflict' } },
+              { 'n', '<leader>Ct', actions.conflict_choose 'theirs', { desc = 'Choose the THEIRS version of a conflict' } },
+              { 'n', '<leader>Cb', actions.conflict_choose 'base', { desc = 'Choose the BASE version of a conflict' } },
+              { 'n', '<leader>Ca', actions.conflict_choose 'all', { desc = 'Choose all the versions of a conflict' } },
+              { 'n', '<leader>CO', actions.conflict_choose_all 'ours', { desc = 'Choose the OURS version of a conflict for the whole file' } },
+              { 'n', '<leader>CT', actions.conflict_choose_all 'theirs', { desc = 'Choose the THEIRS version of a conflict for the whole file' } },
+              { 'n', '<leader>CB', actions.conflict_choose_all 'base', { desc = 'Choose the BASE version of a conflict for the whole file' } },
+              { 'n', '<leader>CA', actions.conflict_choose_all 'all', { desc = 'Choose all the versions of a conflict for the whole file' } },
+            },
+          },
+        }
+      end,
+    },
 
     -- Detect tabstop and shiftwidth automatically
     -- https://github.com/tpope/vim-sleuth
@@ -804,13 +787,14 @@ vim.keymap.set('n', '<leader>ss', telescope.builtin, { desc = '[s]earch [s]elect
 vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = '[s]earch [t]odo' })
 vim.keymap.set('n', '<leader>sw', telescope.grep_string, { desc = '[s]earch current [w]ord' })
 
--- TODO: Git workflow to do
 vim.keymap.set('n', '<leader>gb', telescope.git_branches, { desc = '[g]it: [b]ranches' })
-vim.keymap.set('n', '<leader>gf', telescope.git_bcommits, { desc = '[g]it: [f]ile commit history' })
-vim.keymap.set('n', '<leader>gg', '<cmd>Flog -all<cr>', { desc = '[g]it: [g]raph' })
-vim.keymap.set('n', '<leader>gh', telescope.git_commits, { desc = '[g]it: project commit [h]istory' })
-vim.keymap.set('n', '<leader>gs', telescope.git_stash, { desc = '[g]it: [s]tashes' })
-vim.keymap.set('n', '<leader>gt', telescope.git_status, { desc = '[g]it: s[t]atus' })
+vim.keymap.set('n', '<leader>gB', '<cmd>:Gitsigns blame<cr>', { desc = '[g]it: [B]lame' })
+-- TODO: close with <leader>c instead? maybe closing tab if more than one
+vim.keymap.set('n', '<leader>gc', '<cmd>:DiffviewClose<cr>', { desc = '[g]it: [c]lose diff view' })
+vim.keymap.set('n', '<leader>gf', '<cmd>:DiffviewFileHistory %<cr>', { desc = '[g]it: [f]ile commit history' })
+vim.keymap.set('n', '<leader>gg', '<cmd>:DiffviewOpen<cr>', { desc = '[g]it: status or conflict resolution' })
+vim.keymap.set('n', '<leader>gh', '<cmd>:DiffviewFileHistory<cr>', { desc = '[g]it: project commit [h]istory' })
+vim.keymap.set('n', '<leader>gl', '<cmd>Flog -all<cr>', { desc = '[g]it: [l]og' })
 
 vim.keymap.set('n', '<leader>sp', function()
   require('telescope').extensions.repo.list { search_dirs = { '~/workspace' } }
