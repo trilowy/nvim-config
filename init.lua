@@ -553,6 +553,10 @@ require('lazy').setup {
 
     -- TODO: Copilot chat for work or https://github.com/olimorris/codecompanion.nvim
 
+    -- TODO: org-mode to take notes
+    -- - https://github.com/nvim-neorg/neorg (young and incomplete)
+    -- - https://github.com/nvim-orgmode/orgmode
+
     -- Manage Rust crates
     -- https://github.com/saecki/crates.nvim
     {
