@@ -23,6 +23,7 @@ Note: `<leader>` is `space` in this configuration.
 
 - `<leader>w` - [w]rite buffer
 - `<leader>c` - [c]lose buffer
+- `<leader>d` - close all buffers except current one
 - `]q` - next [q]uickfix
 - `[q` - previous [q]uickfix
 - `gd` - LSP: [g]oto [d]efinition

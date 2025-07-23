@@ -732,6 +732,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = '[w]rite buffer' })
 vim.keymap.set('n', '<leader>c', '<cmd>bd<cr>', { desc = '[c]lose buffer' })
+-- %bd = delete all buffers.
+-- e# = open the last buffer for editing.
+-- bd# = delete the [No Name] buffer that gets created
+-- '" = keep cursor position
+vim.keymap.set('n', '<leader>d', '<cmd>%bd|e#|bd#<cr>|\'"', { desc = 'close all buffers except current one' })
 vim.keymap.set('n', ']q', '<cmd>cnext<cr>', { desc = 'next [q]uickfix' })
 vim.keymap.set('n', '[q', '<cmd>cprev<cr>', { desc = 'previous [q]uickfix' })
 vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>', { desc = 'clear highlight on search' })
