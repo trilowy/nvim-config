@@ -259,6 +259,16 @@ require('lazy').setup {
       },
       config = function()
         require('telescope').setup {
+          defaults = {
+            mappings = {
+              n = {
+                ['<c-d>'] = require('telescope.actions').delete_buffer,
+              },
+              i = {
+                ['<c-d>'] = require('telescope.actions').delete_buffer,
+              },
+            },
+          },
           extensions = {
             ['ui-select'] = {
               require('telescope.themes').get_dropdown(),

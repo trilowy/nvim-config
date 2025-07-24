@@ -119,6 +119,7 @@ Note: `<leader>` is `space` in this configuration.
 ### telescope.nvim plugin
 
 - `<leader><leader>` - find existing buffers
+  - `<c-d>` - close buffer
 - `<leader>/` - fuzzily search in current buffer
 - `<leader>s.` - [s]earch recent files (`.` for repeat)
 - `<leader>sc` - [s]earch [c]olor scheme
