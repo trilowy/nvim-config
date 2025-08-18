@@ -476,15 +476,18 @@ require('lazy').setup {
 
     -- Git
     -- https://github.com/tpope/vim-fugitive
-    'tpope/vim-fugitive',
+    {
+      'tpope/vim-fugitive',
+      dependencies = {
+        -- Fugitive Github integration
+        -- https://github.com/tpope/vim-rhubarb
+        'tpope/vim-rhubarb',
 
-    -- Fugitive Github integration
-    -- https://github.com/tpope/vim-rhubarb
-    'tpope/vim-rhubarb',
-
-    -- Fugitive Gitlab integration
-    -- https://github.com/shumphrey/fugitive-gitlab.vim
-    'shumphrey/fugitive-gitlab.vim',
+        -- Fugitive Gitlab integration
+        -- https://github.com/shumphrey/fugitive-gitlab.vim
+        'shumphrey/fugitive-gitlab.vim',
+      },
+    },
 
     -- Git graph
     -- https://github.com/rbong/vim-flog
