@@ -154,6 +154,10 @@ require('lazy').setup {
     -- https://github.com/rebelot/kanagawa.nvim
     {
       'rebelot/kanagawa.nvim',
+      priority = 1000,
+      init = function()
+        vim.cmd.colorscheme 'kanagawa'
+      end,
       opts = {
         colors = {
           palette = {
@@ -203,10 +207,10 @@ require('lazy').setup {
     -- https://github.com/EdenEast/nightfox.nvim
     {
       'EdenEast/nightfox.nvim',
-      priority = 1000,
-      init = function()
-        vim.cmd.colorscheme 'dawnfox'
-      end,
+      -- priority = 1000,
+      -- init = function()
+      --   vim.cmd.colorscheme 'dawnfox'
+      -- end,
       opts = {},
     },
 
