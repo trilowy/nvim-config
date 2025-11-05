@@ -88,12 +88,10 @@ local config = {
   settings = {
     java = {
       format = {
-        -- settings = { url = 'https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml', profile = 'GoogleStyle' },
-        settings = { url = vim.fn.expand '~/eclipse-formatter.xml', profile = 'eclipse-formatter' },
+        enabled = false,
       },
 
       saveActions = {
-        organizeImports = true,
         cleanup = true,
       },
 
@@ -125,12 +123,6 @@ local config = {
       },
 
       completion = {
-        importOrder = {
-          '',
-          'java',
-          'javax',
-          '#',
-        },
         favoriteStaticMembers = {
           'com.github.tomakehurst.wiremock.client.WireMock.*',
           'org.assertj.core.api.Assertions.*',
