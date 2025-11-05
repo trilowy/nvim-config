@@ -605,6 +605,34 @@ require('lazy').setup {
     -- - https://github.com/nvim-neorg/neorg (young and incomplete)
     -- - https://github.com/nvim-orgmode/orgmode
 
+    -- Google Java Format with none-ls
+    -- https://github.com/nvimtools/none-ls.nvim
+    {
+      'nvimtools/none-ls.nvim',
+      config = function()
+        local nls = require 'null-ls'
+        local fmt = nls.builtins.formatting
+        local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+        nls.setup {
+          sources = {
+            fmt.google_java_format.with { extra_args = { '--aosp' } },
+          },
+          on_attach = function(client, bufnr)
+            if client.supports_method 'textDocument/formatting' then
+              vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+              vim.api.nvim_create_autocmd('BufWritePre', {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                  vim.lsp.buf.format { bufnr = bufnr }
+                end,
+              })
+            end
+          end,
+        }
+      end,
+    },
+
     -- Manage Rust crates
     -- https://github.com/saecki/crates.nvim
     {
@@ -683,6 +711,7 @@ require('mason-tool-installer').setup {
     -- 'tailwindcss-language-server',
     -- Formatter
     'stylua',
+    'google-java-format',
   },
 }
 
