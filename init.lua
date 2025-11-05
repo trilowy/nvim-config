@@ -665,6 +665,7 @@ require('mason-tool-installer').setup {
     -- 'tailwindcss-language-server',
     -- Formatter
     'prettierd',
+    'google-java-format',
   },
 }
 
@@ -796,6 +797,28 @@ ls.add_snippets('java', {
     },
   }),
 })
+
+-- Google Java Format with none-ls
+local nls = require 'null-ls'
+local fmt = nls.builtins.formatting
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+nls.setup {
+  sources = {
+    fmt.google_java_format.with { extra_args = { '--aosp' } },
+  },
+  on_attach = function(client, bufnr)
+    if client.supports_method 'textDocument/formatting' then
+      vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format { bufnr = bufnr }
+        end,
+      })
+    end
+  end,
+}
 
 -- =============
 -- || Keymaps ||
