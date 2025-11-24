@@ -153,10 +153,10 @@ require('lazy').setup {
     -- https://github.com/rebelot/kanagawa.nvim
     {
       'rebelot/kanagawa.nvim',
-      -- priority = 1000,
-      -- init = function()
-      --   vim.cmd.colorscheme 'kanagawa-wave'
-      -- end,
+      priority = 1000,
+      init = function()
+        vim.cmd.colorscheme 'kanagawa-wave'
+      end,
       opts = {
         colors = {
           palette = {
@@ -198,10 +198,10 @@ require('lazy').setup {
     -- https://github.com/p00f/alabaster.nvim
     {
       'p00f/alabaster.nvim',
-      priority = 1000,
-      init = function()
-        vim.cmd.colorscheme 'alabaster'
-      end,
+      -- priority = 1000,
+      -- init = function()
+      --   vim.cmd.colorscheme 'alabaster'
+      -- end,
     },
 
     -- TODO: other colorscheme?
