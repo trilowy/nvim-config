@@ -858,6 +858,8 @@ end, { desc = '[s]earch [c]olor scheme' })
 
 vim.keymap.set('v', '<leader>sg', "\"zy<cmd>exec 'Telescope grep_string default_text=' . escape(@z, ' ')<cr>", { desc = '[s]earch by [g]rep the selection' })
 
+vim.keymap.set('v', 'gs', ':s/<bslash>(.*<bslash>)/<bslash><bslash><bslash><bslash><bslash>1<cr><cmd>nohlsearch<cr>', { desc = 'zig multiline string' })
+
 local crates = require 'crates'
 vim.keymap.set('n', '<leader>rt', crates.toggle, { desc = '[r]ust crates: [t]oggle' })
 vim.keymap.set('n', '<leader>rr', crates.reload, { desc = '[r]ust crates: [r]eload' })
