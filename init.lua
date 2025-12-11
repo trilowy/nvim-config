@@ -125,9 +125,7 @@ vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 -- - "rounded": Like "single", but with rounded corners ("╭" etc.).
 -- - "solid": Adds padding by a single whitespace cell.
 -- - "shadow": A drop shadow effect by blending with the background.
--- It is set to none and overriden later for the LSP because of Telescope bug
--- TODO: See https://github.com/nvim-telescope/telescope.nvim/issues/3436
-vim.o.winborder = 'none'
+vim.o.winborder = 'rounded'
 
 -- TODO: :h undofile
 -- Save undo history even after closing the buffer or a crash
@@ -788,14 +786,6 @@ vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'open parent directory' })
 -- vim.keymap.set('i', '<c-space>', function()
 --   vim.lsp.completion.get()
 -- end, { desc = 'trigger auto-completion' })
-
--- Fix LSP hover popup
--- TODO: See https://github.com/nvim-telescope/telescope.nvim/issues/3436#issuecomment-2775658101
-local lsp_hover = vim.lsp.buf.hover
----@diagnostic disable-next-line: duplicate-set-field
-vim.lsp.buf.hover = function()
-  return lsp_hover { border = 'rounded' }
-end
 
 vim.keymap.set('n', ']t', function()
   require('todo-comments').jump_next()
