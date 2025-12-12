@@ -576,9 +576,13 @@ require('lazy').setup {
     -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-    -- Better substitute
-    -- https://github.com/tpope/vim-abolish
-    'tpope/vim-abolish',
+    -- Change case
+    -- https://github.com/gregorias/coerce.nvim
+    {
+      'gregorias/coerce.nvim',
+      tag = 'v4.1.0',
+      config = true,
+    },
 
     -- TODO: Buffer navigation
     -- https://github.com/otavioschwanck/arrow.nvim
