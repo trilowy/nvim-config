@@ -71,6 +71,10 @@ local config = {
   -- for a list of options
   settings = {
     java = {
+      format = {
+        enabled = false,
+      },
+
       saveActions = {
         cleanup = true,
       },
