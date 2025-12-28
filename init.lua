@@ -449,6 +449,10 @@ require('lazy').setup {
             stop_after_first = true,
             formatters = { 'prettierd', 'prettier' },
           },
+          html = {
+            stop_after_first = true,
+            formatters = { 'prettierd', 'prettier' },
+          },
         },
       },
     },
@@ -662,6 +666,7 @@ require('mason-tool-installer').setup {
     'taplo', -- TOML
     'html-lsp',
     'kotlin-lsp',
+    'prettierd',
     -- 'tailwindcss-language-server',
     -- Formatter
     'stylua',
