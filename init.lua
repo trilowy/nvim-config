@@ -445,14 +445,8 @@ require('lazy').setup {
         },
         formatters_by_ft = {
           lua = { 'stylua' },
-          javascript = {
-            stop_after_first = true,
-            formatters = { 'prettierd', 'prettier' },
-          },
-          html = {
-            stop_after_first = true,
-            formatters = { 'superhtml', 'prettierd', 'prettier' },
-          },
+          javascript = { 'prettierd' },
+          html = { 'prettierd' },
         },
       },
     },
@@ -664,9 +658,9 @@ require('mason-tool-installer').setup {
     'lua-language-server',
     'jdtls', -- Java: started in ftplugin/java.lua
     'taplo', -- TOML
-    'html-lsp',
+    -- 'html-lsp',
     'kotlin-lsp',
-    'superhtml',
+    -- 'superhtml',
     -- 'tailwindcss-language-server',
     -- Formatter
     'prettierd',
@@ -693,7 +687,7 @@ vim.lsp.enable {
   'toml',
   -- 'html',
   'kotlin',
-  'superhtml',
+  -- 'superhtml',
   -- 'tailwindcss',
   'zig',
 }
