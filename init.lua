@@ -451,7 +451,7 @@ require('lazy').setup {
           },
           html = {
             stop_after_first = true,
-            formatters = { 'prettierd', 'prettier' },
+            formatters = { 'superhtml', 'prettierd', 'prettier' },
           },
         },
       },
@@ -666,16 +666,17 @@ require('mason-tool-installer').setup {
     'taplo', -- TOML
     'html-lsp',
     'kotlin-lsp',
-    'prettierd',
+    'superhtml',
     -- 'tailwindcss-language-server',
     -- Formatter
+    'prettierd',
     'stylua',
   },
 }
 
 -- TODO: see if I install with the OS instead of Mason the LSP I can
 -- TODO: JS/TS with ts_ls?
--- TODO: superhtml crashes on small Zig zmpl templates without layout
+-- TODO: superhtml crashes on small Zig zmpl templates without layout: Templated HTML (Jinja2, Angular, Mustache, ...) is not yet supported when all validation rules are enabled, use --syntax-only to limit validation to syntax errors to use SuperHTML with templated HTML documents.
 
 -- With blink.cmp and luasnip, Neovim now has more capabilities, we broadcast that to the LSP
 local capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -690,8 +691,9 @@ vim.lsp.enable {
   'lua',
   'rust',
   'toml',
-  'html',
+  -- 'html',
   'kotlin',
+  'superhtml',
   -- 'tailwindcss',
   'zig',
 }
