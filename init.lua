@@ -579,7 +579,13 @@ require('lazy').setup {
     {
       'gregorias/coerce.nvim',
       tag = 'v4.1.0',
-      config = true,
+      opts = {
+        default_mode_keymap_prefixes = {
+          normal_mode = 'gc',
+          motion_mode = 'gc',
+          visual_mode = 'gc',
+        },
+      },
     },
 
     -- TODO: Buffer navigation
@@ -816,6 +822,7 @@ require('which-key').add {
   { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
   { '<leader>r', group = '[R]ust crates', mode = { 'n', 'v' } },
   { '<leader>j', group = '[J]ava', mode = { 'n', 'v' } },
+  { 'gc', group = 'change [c]ase', mode = { 'n', 'v' } },
 }
 
 local telescope = require 'telescope.builtin'

@@ -54,6 +54,10 @@ Note: `<leader>` is `space` in this configuration.
 - `<c-l>` and `<c-h>` - move to the right/left of each of the expansion locations (function arguments)
 - `<c-s>` - show signature
 
+### coerce.nvim plugin
+
+- `gc` - change [c]ase
+
 ### crates.nvim plugin
 
 - `<leader>rt` - [r]ust crates: [t]oggle
