@@ -581,9 +581,9 @@ require('lazy').setup {
       tag = 'v4.1.0',
       opts = {
         default_mode_keymap_prefixes = {
-          normal_mode = 'gc',
-          motion_mode = 'gc',
-          visual_mode = 'gc',
+          normal_mode = '<leader>k',
+          motion_mode = '<leader>k',
+          visual_mode = '<leader>k',
         },
       },
     },
@@ -822,7 +822,7 @@ require('which-key').add {
   { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
   { '<leader>r', group = '[R]ust crates', mode = { 'n', 'v' } },
   { '<leader>j', group = '[J]ava', mode = { 'n', 'v' } },
-  { 'gc', group = 'change [c]ase', mode = { 'n', 'v' } },
+  { '<leader>k', group = 'change case', mode = { 'n', 'v' } },
 }
 
 local telescope = require 'telescope.builtin'

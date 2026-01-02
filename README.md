@@ -56,7 +56,7 @@ Note: `<leader>` is `space` in this configuration.
 
 ### coerce.nvim plugin
 
-- `gc` - change [c]ase
+- `<leader>k` - change case
 
 ### crates.nvim plugin
 
