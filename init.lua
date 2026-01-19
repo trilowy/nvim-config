@@ -592,8 +592,6 @@ require('lazy').setup {
     -- https://github.com/otavioschwanck/arrow.nvim
     -- https://github.com/ThePrimeagen/harpoon/tree/harpoon2 (branch harpoon2)
 
-    -- TODO: camelCase to snake_case
-
     -- TODO: Markdown preview https://github.com/OXY2DEV/markview.nvim
 
     -- TODO: Copilot chat for work or https://github.com/olimorris/codecompanion.nvim
