@@ -567,8 +567,8 @@ require('lazy').setup {
     },
 
     -- Install LSP
-    -- https://github.com/williamboman/mason.nvim
-    { 'williamboman/mason.nvim', opts = {} },
+    -- https://github.com/mason-org/mason.nvim
+    { 'mason-org/mason.nvim', opts = {} },
 
     -- Automatically install LSP
     -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
