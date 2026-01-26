@@ -46,7 +46,10 @@ if vim.fn.has 'wsl' == 1 then
 end
 
 -- Sync clipboard between OS and Neovim
-vim.opt.clipboard = 'unnamedplus'
+-- Schedule the setting after `UiEnter` because it can increase startup-time
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking text',
