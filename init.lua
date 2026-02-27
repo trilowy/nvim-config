@@ -133,10 +133,10 @@ vim.o.winborder = 'rounded'
 -- TODO: :h undofile
 -- Save undo history even after closing the buffer or a crash
 
--- Recognize *.zpml (Zig template) file as HTML
+-- Recognize *.zt (Zig template) file as HTML
 vim.filetype.add {
   extension = {
-    zmpl = 'html',
+    zt = 'html',
   },
 }
 
