@@ -871,6 +871,21 @@ vim.keymap.set('n', '<leader>sc', function()
   }
 end, { desc = '[s]earch [c]olor scheme' })
 
+vim.keymap.set('n', '<leader>sF', function()
+  telescope.find_files {
+    no_ignore = true, -- Include ignored files
+    hidden = true, -- Optionally include hidden files
+  }
+end, { desc = '[s]earch all [F]iles' })
+
+vim.keymap.set('n', '<leader>sG', function()
+  telescope.live_grep {
+    additional_args = function()
+      return { '--no-ignore' }
+    end,
+  }
+end, { desc = '[s]earch by [G]rep on all files' })
+
 vim.keymap.set('v', '<leader>sg', "\"zy<cmd>exec 'Telescope grep_string default_text=' . escape(@z, ' ')<cr>", { desc = '[s]earch by [g]rep the selection' })
 
 vim.keymap.set('v', 'gs', ':s/<bslash>(.*<bslash>)/<bslash><bslash><bslash><bslash><bslash>1<cr><cmd>nohlsearch<cr>', { desc = 'zig multiline string' })
