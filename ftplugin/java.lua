@@ -259,32 +259,3 @@ vim.keymap.set('v', '<leader>jv', "<esc><cmd>lua require('jdtls').extract_variab
 vim.keymap.set('n', '<leader>jc', "<cmd>lua require('jdtls').extract_constant()<cr>", { desc = '[j]ava: extract [c]onstant' })
 vim.keymap.set('v', '<leader>jc', "<esc><cmd>lua require('jdtls').extract_constant(true)<cr>", { desc = '[j]ava: extract [c]onstant' })
 vim.keymap.set('v', '<leader>jm', "<esc><cmd>lua require('jdtls').extract_method(true)<cr>", { desc = '[j]ava: extract [m]ethod' })
-
--- Add header snippet
-local ls = require 'luasnip'
-local s = ls.snippet
-local t = ls.text_node
-local f = ls.function_node
-
-local function year()
-  return vim.fn.strftime '%Y'
-end
-
-ls.add_snippets('java', {
-  s('header', {
-    t { '/*', ' *-----------------------------------------------------------------', '' },
-    t ' * Ce code source est la propriété de TODO. Tous droits réservés, ',
-    f(year, {}),
-    t '.',
-    t {
-      '',
-      ' * (C) Copyright TODO, ',
-    },
-    f(year, {}),
-    t {
-      '',
-      ' *-----------------------------------------------------------------',
-      ' */',
-    },
-  }),
-})

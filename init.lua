@@ -775,6 +775,35 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- Add Java header snippet
+local ls = require 'luasnip'
+local s = ls.snippet
+local t = ls.text_node
+local f = ls.function_node
+
+local function year()
+  return vim.fn.strftime '%Y'
+end
+
+ls.add_snippets('java', {
+  s('header', {
+    t { '/*', ' * -----------------------------------------------------------------', '' },
+    t ' * Ce code source est la propriété de TODO. Tous droits réservés, ',
+    f(year, {}),
+    t '.',
+    t {
+      '',
+      ' * (C) Copyright TODO, ',
+    },
+    f(year, {}),
+    t {
+      '',
+      ' * -----------------------------------------------------------------',
+      ' */',
+    },
+  }),
+})
+
 -- =============
 -- || Keymaps ||
 -- =============
