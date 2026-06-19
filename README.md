@@ -2,7 +2,9 @@
 
 ## Installation
 
-Requires neovim >= 0.11
+Requires neovim >= 0.12
+
+To migrate from 0.11, delete `~/.local/share/nvim/lazy/` directory.
 
 Requires dependencies:
 - make
@@ -14,6 +16,7 @@ To clone with:
 ```sh
 git clone git@github.com:trilowy/nvim-config.git ~/.config/nvim/
 ```
+
 
 ## Keymaps
 
@@ -153,3 +156,17 @@ Note: `<leader>` is `space` in this configuration.
 ### todo-comments plugin
 
 - `]t` and `[t` - next/previous [t]odo in the buffer
+
+
+## Migration
+
+To migrate from an older version of neovim:
+- Manually download the next version at https://github.com/neovim/neovim/releases
+- Move it to `~/software/`
+- Clone the existing configuration into `~/.config/nvim2/`
+- Create a new Git branch
+- Launch to test with:
+  ```sh
+  NVIM_APPNAME=nvim2 ~/software/nvim-linux-x86_64/bin/nvim
+  ```
+- All vim.pack plugins are in `~/.local/share/nvim2/site/pack/core/opt`
