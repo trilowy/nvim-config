@@ -437,15 +437,13 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- Better autocompletion (LSP, snippets, path)
-vim.pack.add {
-  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1' },
-  -- Dependencies
-  -- Snippet engine (used for Java header comment)
-  { src = 'https://github.com/L3MON4D3/LuaSnip', version = 'v2.5.0' },
-}
+-- Snippet engine (used for Java header comment)
+vim.pack.add { { src = 'https://github.com/L3MON4D3/LuaSnip', version = 'v2.5.0' } }
 
 require('luasnip').setup()
+
+-- Better autocompletion (LSP, snippets, path)
+vim.pack.add { { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1' } }
 
 require('blink-cmp').setup {
   keymap = {
