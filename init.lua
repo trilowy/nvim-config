@@ -1,184 +1,4 @@
 -- =============
--- || Plugins ||
--- =============
-
--- :checkhealth vim.pack
--- :lua vim.pack.update() will update all plugins
--- :lua vim.pack.update({ 'mini.nvim' })
--- :lua vim.pack.update(nil, { offline = true }) show the current state of plugins without downloading new changes from sources
--- :lua vim.pack.update(nil, { target = 'lockfile' }) make sure that plugin state on disk is the same as recorded in the lockfile
--- :lua vim.pack.del({ 'nvim-lspconfig', 'nvim-treesitter' }) delete plugin(s) from disk. This will also remove the plugin from the lockfile
-
--- Faster start time
--- See https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack
-vim.loader.enable()
-
-vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(ev)
-    local name = ev.data.spec.name
-    local kind = ev.data.kind
-    local plugin_path = ev.data.path
-
-    if kind ~= 'install' and kind ~= 'update' then
-      return
-    end
-
-    -- Compiling telescope-fzf-native
-    if name == 'telescope-fzf-native.nvim' then
-      vim.system({ 'make' }, { cwd = plugin_path }):wait()
-      return
-    end
-
-    -- Updating tree-sitter parsers whenever the plugin is updated
-    if name == 'nvim-treesitter' then
-      if not ev.data.active then
-        vim.cmd.packadd 'nvim-treesitter'
-      end
-      vim.cmd 'TSUpdate'
-      return
-    end
-  end,
-})
-
-vim.pack.add {
-  -- Colorscheme
-  'https://github.com/rebelot/kanagawa.nvim',
-
-  -- Light colorscheme for work
-  -- 'https://github.com/navarasu/onedark.nvim',
-
-  -- Simple colorscheme to highlight what’s essential
-  -- 'https://github.com/p00f/alabaster.nvim',
-
-  -- TODO: other colorscheme?
-  -- 'https://github.com/EdenEast/nightfox.nvim',
-  -- 'https://github.com/folke/tokyonight.nvim',
-
-  -- Directory edition
-  'https://github.com/stevearc/oil.nvim',
-  -- Dependencies
-  'https://github.com/nvim-tree/nvim-web-devicons',
-
-  -- Tree directory edition
-  { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim', version = vim.version.range '3' },
-  -- Dependencies
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/MunifTanjim/nui.nvim',
-  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
-
-  -- Automatically change root dir to the project of the current buffer
-  'https://github.com/notjedi/nvim-rooter.lua',
-
-  -- Fuzzy search
-  { src = 'https://github.com/nvim-telescope/telescope.nvim', version = '0.1.x' },
-  -- Dependencies
-  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
-  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
-  'https://github.com/nvim-telescope/telescope-ui-select.nvim',
-  'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
-  'https://github.com/cljoly/telescope-repo.nvim',
-
-  -- Better popup for LSP rename
-  -- TODO: try to make it work with snacks.nvim
-  'https://github.com/stevearc/dressing.nvim',
-
-  -- Useful status updates for LSP
-  -- TODO: might not need it with statusline
-  -- 'https://github.com/j-hui/fidget.nvim',
-
-  -- Navigate todos in comments
-  'https://github.com/folke/todo-comments.nvim',
-  -- Dependencies
-  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
-
-  -- Show keymaps while typing them
-  'https://github.com/folke/which-key.nvim',
-  -- Dependencies
-  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
-
-  -- Statusline
-  'https://github.com/nvim-lualine/lualine.nvim',
-  -- Dependencies
-  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
-
-  -- Install syntax parsers for treesitter
-  'https://github.com/nvim-treesitter/nvim-treesitter',
-
-  -- Better autocompletion (LSP, snippets, path)
-  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1' },
-  -- Dependencies
-  -- Snippet engine (used for Java header comment)
-  {
-    src = 'https://github.com/L3MON4D3/LuaSnip',
-    version = 'v2.5.0',
-    build = function()
-      vim.fn.system { 'make install_jsregexp' }
-    end,
-  },
-
-  -- Auto-format on save
-  'https://github.com/stevearc/conform.nvim',
-
-  -- Git integration
-  'https://github.com/lewis6991/gitsigns.nvim',
-
-  -- Git
-  'https://github.com/tpope/vim-fugitive',
-  -- Fugitive Github integration
-  'https://github.com/tpope/vim-rhubarb',
-  -- Fugitive Gitlab integration
-  'https://github.com/shumphrey/fugitive-gitlab.vim',
-
-  -- Git graph
-  -- TODO: to configure and learn
-  'https://github.com/rbong/vim-flog',
-  -- Dependencies
-  -- 'https://github.com/tpope/vim-fugitive', -- Duplicate
-
-  -- See Git changes and resolve conflicts
-  'https://github.com/sindrets/diffview.nvim',
-
-  -- Detect tabstop and shiftwidth automatically
-  'https://github.com/tpope/vim-sleuth',
-
-  -- Recover automatically the last session and opened buffers
-  -- TODO: to replace by https://github.com/olimorris/persisted.nvim to save by Git branch
-  'https://github.com/rmagatti/auto-session',
-
-  -- Install LSP
-  'https://github.com/mason-org/mason.nvim',
-
-  -- Automatically install LSP
-  'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
-
-  -- Change case
-  { src = 'https://github.com/gregorias/coerce.nvim', version = 'v5.0.0' },
-
-  -- TODO: Buffer navigation
-  -- 'https://github.com/otavioschwanck/arrow.nvim',
-  -- { src = 'https://github.com/ThePrimeagen/harpoon/tree/harpoon2', version = 'harpoon2' },
-
-  -- TODO: Markdown preview https://github.com/OXY2DEV/markview.nvim
-
-  -- TODO: Copilot chat for work or https://github.com/olimorris/codecompanion.nvim
-
-  -- TODO: org-mode to take notes
-  -- - https://github.com/nvim-neorg/neorg (young and incomplete)
-  -- - https://github.com/nvim-orgmode/orgmode
-
-  -- Manage Rust crates
-  { src = 'https://github.com/saecki/crates.nvim', version = 'stable' },
-  -- Dependencies
-  -- LSP like for crates
-  'https://github.com/nvimtools/none-ls.nvim',
-  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
-
-  -- Java LSP
-  -- See ftplugin/java.lua for the whole configuration
-  'https://github.com/mfussenegger/nvim-jdtls',
-}
-
--- =============
 -- || Options ||
 -- =============
 
@@ -299,6 +119,53 @@ vim.filetype.add {
 -- || Plugins ||
 -- =============
 
+-- :checkhealth vim.pack
+-- :lua vim.pack.update() will update all plugins
+-- :lua vim.pack.update({ 'mini.nvim' })
+-- :lua vim.pack.update(nil, { offline = true }) show the current state of plugins without downloading new changes from sources
+-- :lua vim.pack.update(nil, { target = 'lockfile' }) make sure that plugin state on disk is the same as recorded in the lockfile
+-- :lua vim.pack.del({ 'nvim-lspconfig', 'nvim-treesitter' }) delete plugin(s) from disk. This will also remove the plugin from the lockfile
+
+-- Faster start time
+-- See https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack
+vim.loader.enable()
+
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name = ev.data.spec.name
+    local kind = ev.data.kind
+    local plugin_path = ev.data.path
+
+    if kind ~= 'install' and kind ~= 'update' then
+      return
+    end
+
+    -- Compiling telescope-fzf-native
+    if name == 'telescope-fzf-native.nvim' then
+      vim.system({ 'make' }, { cwd = plugin_path }):wait()
+      return
+    end
+
+    -- Updating tree-sitter parsers whenever the plugin is updated
+    if name == 'nvim-treesitter' then
+      if not ev.data.active then
+        vim.cmd.packadd 'nvim-treesitter'
+      end
+      vim.cmd 'TSUpdate'
+      return
+    end
+
+    -- Compiling LuaSnip
+    if name == 'LuaSnip' then
+      vim.system({ 'make', 'install_jsregexp' }, { cwd = plugin_path }):wait()
+      return
+    end
+  end,
+})
+
+-- Colorscheme
+vim.pack.add { 'https://github.com/rebelot/kanagawa.nvim' }
+
 require('kanagawa').setup {
   colors = {
     palette = {
@@ -338,10 +205,27 @@ require('kanagawa').setup {
 -- Neovim default habamax, slate, unokai, wildcharm and sorbet are also nice, maybe zellner for Java
 vim.cmd.colorscheme 'kanagawa-wave'
 
+-- Light colorscheme for work
+-- vim.pack.add { 'https://github.com/navarasu/onedark.nvim' }
+
 -- require('onedark').setup {
 --   -- Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 --   style = 'light',
 -- }
+
+-- Simple colorscheme to highlight what’s essential
+-- vim.pack.add { 'https://github.com/p00f/alabaster.nvim' }
+
+-- TODO: other colorscheme?
+-- vim.pack.add { 'https://github.com/EdenEast/nightfox.nvim' }
+-- vim.pack.add { 'https://github.com/folke/tokyonight.nvim' }
+
+-- Directory edition
+vim.pack.add {
+  'https://github.com/stevearc/oil.nvim',
+  -- Dependencies
+  'https://github.com/nvim-tree/nvim-web-devicons',
+}
 
 require('oil').setup {
   view_options = {
@@ -351,6 +235,15 @@ require('oil').setup {
       return (name == '..')
     end,
   },
+}
+
+-- Tree directory edition
+vim.pack.add {
+  { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim', version = vim.version.range '3' },
+  -- Dependencies
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/MunifTanjim/nui.nvim',
+  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
 }
 
 require('neo-tree').setup {
@@ -363,7 +256,21 @@ require('neo-tree').setup {
   },
 }
 
+-- Automatically change root dir to the project of the current buffer
+vim.pack.add { 'https://github.com/notjedi/nvim-rooter.lua' }
+
 require('nvim-rooter').setup()
+
+-- Fuzzy search
+vim.pack.add {
+  { src = 'https://github.com/nvim-telescope/telescope.nvim', version = '0.1.x' },
+  -- Dependencies
+  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
+  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
+  'https://github.com/nvim-telescope/telescope-ui-select.nvim',
+  'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
+  'https://github.com/cljoly/telescope-repo.nvim',
+}
 
 require('telescope').setup {
   defaults = {
@@ -389,11 +296,40 @@ require('telescope').load_extension 'fzf'
 -- Search projects
 require('telescope').load_extension 'repo'
 
+-- Better popup for LSP rename
+-- TODO: try to make it work with snacks.nvim
+vim.pack.add { 'https://github.com/stevearc/dressing.nvim' }
+
 require('dressing').setup()
+
+-- Useful status updates for LSP
+-- TODO: might not need it with statusline
+-- vim.pack.add { 'https://github.com/j-hui/fidget.nvim' }
+
+-- Navigate todos in comments
+vim.pack.add {
+  'https://github.com/folke/todo-comments.nvim',
+  -- Dependencies
+  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
+}
 
 require('todo-comments').setup()
 
+-- Show keymaps while typing them
+vim.pack.add {
+  'https://github.com/folke/which-key.nvim',
+  -- Dependencies
+  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
+}
+
 require('which-key').setup()
+
+-- Statusline
+vim.pack.add {
+  'https://github.com/nvim-lualine/lualine.nvim',
+  -- Dependencies
+  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
+}
 
 require('lualine').setup {
   sections = {
@@ -439,7 +375,18 @@ require('lualine').setup {
   },
 }
 
+-- Install syntax parsers for treesitter
+vim.pack.add { 'https://github.com/nvim-treesitter/nvim-treesitter' }
+
 require('nvim-treesitter.install').prefer_git = true
+
+-- Better autocompletion (LSP, snippets, path)
+vim.pack.add {
+  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1' },
+  -- Dependencies
+  -- Snippet engine (used for Java header comment)
+  { src = 'https://github.com/L3MON4D3/LuaSnip', version = 'v2.5.0' },
+}
 
 require('luasnip').setup()
 
@@ -458,6 +405,9 @@ require('blink-cmp').setup {
   -- Shows a signature help window while you type arguments for a function
   signature = { enabled = true },
 }
+
+-- Auto-format on save
+vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
 
 require('conform').setup {
   format_on_save = {
@@ -510,7 +460,30 @@ require('conform').setup {
 -- TODO: learn fugitive/git command to amend a commit
 -- https://github.com/tpope/vim-fugitive?tab=readme-ov-file#screencasts
 
+-- Git integration
+vim.pack.add { 'https://github.com/lewis6991/gitsigns.nvim' }
+
 require('gitsigns').setup()
+
+-- Git
+vim.pack.add {
+  'https://github.com/tpope/vim-fugitive',
+  -- Fugitive Github integration
+  'https://github.com/tpope/vim-rhubarb',
+  -- Fugitive Gitlab integration
+  'https://github.com/shumphrey/fugitive-gitlab.vim',
+}
+
+-- Git graph
+-- TODO: to configure and learn
+vim.pack.add {
+  'https://github.com/rbong/vim-flog',
+  -- Dependencies
+  -- 'https://github.com/tpope/vim-fugitive', -- Duplicate
+}
+
+-- See Git changes and resolve conflicts
+vim.pack.add { 'https://github.com/sindrets/diffview.nvim' }
 
 local diffview_actions = require 'diffview.actions'
 require('diffview').setup {
@@ -533,7 +506,23 @@ require('diffview').setup {
   },
 }
 
+-- Detect tabstop and shiftwidth automatically
+vim.pack.add { 'https://github.com/tpope/vim-sleuth' }
+
+-- Recover automatically the last session and opened buffers
+-- TODO: to replace by https://github.com/olimorris/persisted.nvim to save by Git branch
+vim.pack.add { 'https://github.com/rmagatti/auto-session' }
+
 require('auto-session').setup()
+
+-- Install LSP
+vim.pack.add { 'https://github.com/mason-org/mason.nvim' }
+
+-- Automatically install LSP
+vim.pack.add { 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim' }
+
+-- Change case
+vim.pack.add { { src = 'https://github.com/gregorias/coerce.nvim', version = 'v5.0.0' } }
 
 require('coerce').setup {
   default_mode_keymap_prefixes = {
@@ -541,6 +530,27 @@ require('coerce').setup {
     motion_mode = '<leader>k',
     visual_mode = '<leader>k',
   },
+}
+
+-- TODO: Buffer navigation
+-- vim.pack.add { 'https://github.com/otavioschwanck/arrow.nvim' }
+-- vim.pack.add { { src = 'https://github.com/ThePrimeagen/harpoon/tree/harpoon2', version = 'harpoon2' } }
+
+-- TODO: Markdown preview https://github.com/OXY2DEV/markview.nvim
+
+-- TODO: Copilot chat for work or https://github.com/olimorris/codecompanion.nvim
+
+-- TODO: org-mode to take notes
+-- - https://github.com/nvim-neorg/neorg (young and incomplete)
+-- - https://github.com/nvim-orgmode/orgmode
+
+-- Manage Rust crates
+vim.pack.add {
+  { src = 'https://github.com/saecki/crates.nvim', version = 'stable' },
+  -- Dependencies
+  -- LSP like for crates
+  'https://github.com/nvimtools/none-ls.nvim',
+  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
 }
 
 require('crates').setup {
@@ -568,6 +578,10 @@ require('crates').setup {
   --   },
   -- },
 }
+
+-- Java LSP
+-- See ftplugin/java.lua for the whole configuration
+vim.pack.add { 'https://github.com/mfussenegger/nvim-jdtls' }
 
 -- =========
 -- || LSP ||
