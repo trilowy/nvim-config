@@ -13,25 +13,29 @@
 -- See https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack
 vim.loader.enable()
 
--- Updating tree-sitter parsers whenever the plugin is updated
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    if name == 'nvim-treesitter' and kind == 'update' then
+    local name = ev.data.spec.name
+    local kind = ev.data.kind
+    local plugin_path = ev.data.path
+
+    if kind ~= 'install' and kind ~= 'update' then
+      return
+    end
+
+    -- Compiling telescope-fzf-native
+    if name == 'telescope-fzf-native.nvim' then
+      vim.system({ 'make' }, { cwd = plugin_path }):wait()
+      return
+    end
+
+    -- Updating tree-sitter parsers whenever the plugin is updated
+    if name == 'nvim-treesitter' then
       if not ev.data.active then
         vim.cmd.packadd 'nvim-treesitter'
       end
       vim.cmd 'TSUpdate'
-    end
-  end,
-})
-
--- Compiling telescope-fzf-native
-vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(ev)
-    local name, kind, path = ev.data.spec.name, ev.data.kind, ev.data.path
-    if name == 'telescope-fzf-native.nvim' and (kind == 'install' or kind == 'update') then
-      vim.system({ 'make' }, { cwd = path }):wait()
+      return
     end
   end,
 })
