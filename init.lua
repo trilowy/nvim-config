@@ -5,24 +5,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Share clipboard between Windows and WSL
--- :h clipboard-wsl
-if vim.fn.has 'wsl' == 1 then
-  vim.g.clipboard = {
-    name = 'WslClipboard',
-    -- Windows clip.exe uses UTF-16LE encoding but Neovim only uses UTF-8, we need to convert to copy/paste special characters correctly
-    copy = {
-      ['+'] = { 'sh', '-c', 'iconv -f UTF-8 -t UTF-16LE | clip.exe' },
-      ['*'] = { 'sh', '-c', 'iconv -f UTF-8 -t UTF-16LE | clip.exe' },
-    },
-    paste = {
-      ['+'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ['*'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    },
-    cache_enabled = false,
-  }
-end
-
 -- Sync clipboard between OS and Neovim
 -- Schedule the setting after `UiEnter` because it can increase startup-time
 vim.schedule(function()
@@ -126,46 +108,8 @@ vim.filetype.add {
 -- :lua vim.pack.update(nil, { target = 'lockfile' }) make sure that plugin state on disk is the same as recorded in the lockfile
 -- :lua vim.pack.del({ 'nvim-lspconfig', 'nvim-treesitter' }) delete plugin(s) from disk. This will also remove the plugin from the lockfile
 
--- Faster start time
--- See https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack
-vim.loader.enable()
-
-vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(ev)
-    local name = ev.data.spec.name
-    local kind = ev.data.kind
-    local plugin_path = ev.data.path
-
-    if kind ~= 'install' and kind ~= 'update' then
-      return
-    end
-
-    -- Compiling telescope-fzf-native
-    if name == 'telescope-fzf-native.nvim' then
-      vim.system({ 'make' }, { cwd = plugin_path }):wait()
-      return
-    end
-
-    -- Updating tree-sitter parsers whenever the plugin is updated
-    if name == 'nvim-treesitter' then
-      if not ev.data.active then
-        vim.cmd.packadd 'nvim-treesitter'
-      end
-      vim.cmd 'TSUpdate'
-      return
-    end
-
-    -- Compiling LuaSnip
-    if name == 'LuaSnip' then
-      vim.system({ 'make', 'install_jsregexp' }, { cwd = plugin_path }):wait()
-      return
-    end
-  end,
-})
-
 -- Colorscheme
-vim.pack.add { 'https://github.com/rebelot/kanagawa.nvim' }
-
+-- https://github.com/rebelot/kanagawa.nvim
 require('kanagawa').setup {
   colors = {
     palette = {
@@ -207,29 +151,22 @@ vim.cmd.colorscheme 'kanagawa-wave'
 
 -- TODO: other colorscheme?
 -- Light colorscheme for work
--- vim.pack.add { 'https://github.com/navarasu/onedark.nvim' }
-
+-- https://github.com/navarasu/onedark.nvim
 -- require('onedark').setup {
 --   -- Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 --   style = 'light',
 -- }
 
 -- Simple colorscheme to highlight what’s essential
--- vim.pack.add { 'https://github.com/p00f/alabaster.nvim' }
+-- https://github.com/p00f/alabaster.nvim
 
--- vim.pack.add { 'https://github.com/EdenEast/nightfox.nvim' } -- dawnfox as light colorscheme
-
+-- https://github.com/EdenEast/nightfox.nvim -- dawnfox as light colorscheme
 -- require('nightfox').setup()
 
--- vim.pack.add { 'https://github.com/folke/tokyonight.nvim' }
+-- https://github.com/folke/tokyonight.nvim
 
 -- Directory edition
-vim.pack.add {
-  'https://github.com/stevearc/oil.nvim',
-  -- Dependencies
-  'https://github.com/nvim-tree/nvim-web-devicons',
-}
-
+-- https://github.com/stevearc/oil.nvim
 require('oil').setup {
   view_options = {
     show_hidden = true,
@@ -241,14 +178,7 @@ require('oil').setup {
 }
 
 -- Tree directory edition
-vim.pack.add {
-  { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim', version = vim.version.range '3' },
-  -- Dependencies
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/MunifTanjim/nui.nvim',
-  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
-}
-
+-- https://github.com/nvim-neo-tree/neo-tree.nvim
 require('neo-tree').setup {
   filesystem = {
     window = {
@@ -260,21 +190,11 @@ require('neo-tree').setup {
 }
 
 -- Automatically change root dir to the project of the current buffer
-vim.pack.add { 'https://github.com/notjedi/nvim-rooter.lua' }
-
+-- https://github.com/notjedi/nvim-rooter.lua
 require('nvim-rooter').setup()
 
 -- Fuzzy search
-vim.pack.add {
-  { src = 'https://github.com/nvim-telescope/telescope.nvim', version = '0.1.x' },
-  -- Dependencies
-  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
-  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
-  'https://github.com/nvim-telescope/telescope-ui-select.nvim',
-  'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
-  'https://github.com/cljoly/telescope-repo.nvim',
-}
-
+-- https://github.com/nvim-telescope/telescope.nvim
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -293,47 +213,34 @@ require('telescope').setup {
   },
 }
 -- Popup in Telescope instead of native ones (e.g. LSP code actions)
+-- https://github.com/nvim-telescope/telescope-ui-select.nvim
 require('telescope').load_extension 'ui-select'
 -- More options for fuzzy finding
+-- https://github.com/nvim-telescope/telescope-fzf-native.nvim
 require('telescope').load_extension 'fzf'
 -- Search projects
+-- https://github.com/cljoly/telescope-repo.nvim
 require('telescope').load_extension 'repo'
 
 -- Better popup for LSP rename
 -- TODO: try to make it work with snacks.nvim
-vim.pack.add { 'https://github.com/stevearc/dressing.nvim' }
-
+-- https://github.com/stevearc/dressing.nvim
 require('dressing').setup()
 
 -- Useful status updates for LSP
 -- TODO: might not need it with statusline
--- vim.pack.add { 'https://github.com/j-hui/fidget.nvim' }
+-- https://github.com/j-hui/fidget.nvim
 
 -- Navigate todos in comments
-vim.pack.add {
-  'https://github.com/folke/todo-comments.nvim',
-  -- Dependencies
-  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
-}
-
+-- https://github.com/folke/todo-comments.nvim
 require('todo-comments').setup()
 
 -- Show keymaps while typing them
-vim.pack.add {
-  'https://github.com/folke/which-key.nvim',
-  -- Dependencies
-  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
-}
-
+-- https://github.com/folke/which-key.nvim
 require('which-key').setup()
 
 -- Statusline
-vim.pack.add {
-  'https://github.com/nvim-lualine/lualine.nvim',
-  -- Dependencies
-  -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
-}
-
+-- https://github.com/nvim-lualine/lualine.nvim
 require('lualine').setup {
   sections = {
     lualine_c = {
@@ -379,72 +286,14 @@ require('lualine').setup {
 }
 
 -- Install syntax parsers for treesitter
-vim.pack.add { 'https://github.com/nvim-treesitter/nvim-treesitter' }
-
--- Ensure basic parsers are installed
-local parsers = { 'lua', 'luadoc', 'markdown', 'markdown_inline' }
-require('nvim-treesitter').install(parsers)
-
----@param buf integer
----@param language string
-local function treesitter_try_attach(buf, language)
-  -- Check if a parser exists and load it
-  if not vim.treesitter.language.add(language) then
-    return
-  end
-  -- Enable syntax highlighting and other treesitter features
-  vim.treesitter.start(buf, language)
-
-  -- Enable treesitter based folds
-  -- For more info on folds see `:help folds`
-  -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-  -- vim.wo.foldmethod = 'expr'
-
-  -- Check if treesitter indentation is available for this language, and if so enable it
-  -- in case there is no indent query, the indentexpr will fallback to the vim's built in one
-  local has_indent_query = vim.treesitter.query.get(language, 'indents') ~= nil
-
-  -- Enable treesitter based indentation
-  if has_indent_query then
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-  end
-end
-
-local available_parsers = require('nvim-treesitter').get_available()
-vim.api.nvim_create_autocmd('FileType', {
-  callback = function(args)
-    local buf, filetype = args.buf, args.match
-
-    local language = vim.treesitter.language.get_lang(filetype)
-    if not language then
-      return
-    end
-
-    local installed_parsers = require('nvim-treesitter').get_installed 'parsers'
-
-    if vim.tbl_contains(installed_parsers, language) then
-      -- Enable the parser if it is already installed
-      treesitter_try_attach(buf, language)
-    elseif vim.tbl_contains(available_parsers, language) then
-      -- If a parser is available in `nvim-treesitter`, auto-install it and enable it after the installation is done
-      require('nvim-treesitter').install(language):await(function()
-        treesitter_try_attach(buf, language)
-      end)
-    else
-      -- Try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
-      treesitter_try_attach(buf, language)
-    end
-  end,
-})
+-- https://github.com/nvim-treesitter/nvim-treesitter
 
 -- Snippet engine (used for Java header comment)
-vim.pack.add { { src = 'https://github.com/L3MON4D3/LuaSnip', version = 'v2.5.0' } }
-
+-- https://github.com/L3MON4D3/LuaSnip
 require('luasnip').setup()
 
 -- Better autocompletion (LSP, snippets, path)
-vim.pack.add { { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1' } }
-
+-- https://github.com/saghen/blink.cmp
 require('blink-cmp').setup {
   keymap = {
     ['<c-i>'] = { 'select_and_accept' },
@@ -462,8 +311,7 @@ require('blink-cmp').setup {
 }
 
 -- Auto-format on save
-vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
-
+-- https://github.com/stevearc/conform.nvim
 require('conform').setup {
   format_on_save = {
     timeout_ms = 500,
@@ -516,30 +364,24 @@ require('conform').setup {
 -- https://github.com/tpope/vim-fugitive?tab=readme-ov-file#screencasts
 
 -- Git integration
-vim.pack.add { 'https://github.com/lewis6991/gitsigns.nvim' }
-
+-- https://github.com/lewis6991/gitsigns.nvim
 require('gitsigns').setup()
 
 -- Git
-vim.pack.add {
-  'https://github.com/tpope/vim-fugitive',
-  -- Fugitive Github integration
-  'https://github.com/tpope/vim-rhubarb',
-  -- Fugitive Gitlab integration
-  'https://github.com/shumphrey/fugitive-gitlab.vim',
-}
+-- https://github.com/tpope/vim-fugitive
+
+-- Fugitive Github integration
+-- https://github.com/tpope/vim-rhubarb
+
+-- Fugitive Gitlab integration
+-- https://github.com/shumphrey/fugitive-gitlab.vim
 
 -- Git graph
 -- TODO: to configure and learn
-vim.pack.add {
-  'https://github.com/rbong/vim-flog',
-  -- Dependencies
-  -- 'https://github.com/tpope/vim-fugitive', -- Duplicate
-}
+-- https://github.com/rbong/vim-flog
 
 -- See Git changes and resolve conflicts
-vim.pack.add { 'https://github.com/sindrets/diffview.nvim' }
-
+-- https://github.com/sindrets/diffview.nvim
 local diffview_actions = require 'diffview.actions'
 require('diffview').setup {
   view = {
@@ -562,23 +404,15 @@ require('diffview').setup {
 }
 
 -- Detect tabstop and shiftwidth automatically
-vim.pack.add { 'https://github.com/tpope/vim-sleuth' }
+-- https://github.com/tpope/vim-sleuth
 
 -- Recover automatically the last session and opened buffers
 -- TODO: to replace by https://github.com/olimorris/persisted.nvim to save by Git branch
-vim.pack.add { 'https://github.com/rmagatti/auto-session' }
-
+-- https://github.com/rmagatti/auto-session
 require('auto-session').setup()
 
--- Install LSP
-vim.pack.add { 'https://github.com/mason-org/mason.nvim' }
-
--- Automatically install LSP
-vim.pack.add { 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim' }
-
 -- Change case
-vim.pack.add { { src = 'https://github.com/gregorias/coerce.nvim', version = 'v5.0.0' } }
-
+-- https://github.com/gregorias/coerce.nvim
 require('coerce').setup {
   default_mode_keymap_prefixes = {
     normal_mode = '<leader>k',
@@ -588,8 +422,8 @@ require('coerce').setup {
 }
 
 -- TODO: Buffer navigation
--- vim.pack.add { 'https://github.com/otavioschwanck/arrow.nvim' }
--- vim.pack.add { { src = 'https://github.com/ThePrimeagen/harpoon/tree/harpoon2', version = 'harpoon2' } }
+-- https://github.com/otavioschwanck/arrow.nvim
+-- https://github.com/ThePrimeagen/harpoon/tree/harpoon2 (branch harpoon2)
 
 -- TODO: Markdown preview https://github.com/OXY2DEV/markview.nvim
 
@@ -600,14 +434,7 @@ require('coerce').setup {
 -- - https://github.com/nvim-orgmode/orgmode
 
 -- Manage Rust crates
-vim.pack.add {
-  { src = 'https://github.com/saecki/crates.nvim', version = 'stable' },
-  -- Dependencies
-  -- LSP like for crates
-  'https://github.com/nvimtools/none-ls.nvim',
-  -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
-}
-
+-- https://github.com/saecki/crates.nvim
 require('crates').setup {
   null_ls = {
     enabled = true,
@@ -636,29 +463,13 @@ require('crates').setup {
 
 -- Java LSP
 -- See ftplugin/java.lua for the whole configuration
-vim.pack.add { 'https://github.com/mfussenegger/nvim-jdtls' }
+-- https://github.com/mfussenegger/nvim-jdtls
 
 -- =========
 -- || LSP ||
 -- =========
 
 -- :checkhealth lsp
-
--- Automatically install following LSP with Mason
-require('mason').setup()
-
-require('mason-tool-installer').setup {
-  ensure_installed = {
-    -- LSP
-    'jdtls', -- Java: started in ftplugin/java.lua
-    -- 'html-lsp',
-    -- 'kotlin-lsp',
-    -- 'superhtml',
-    -- 'tailwindcss-language-server',
-    -- Formatter
-    'prettierd',
-  },
-}
 
 -- TODO: JS/TS with ts_ls?
 -- TODO: superhtml crashes on small Zig zmpl templates without layout: Templated HTML (Jinja2, Angular, Mustache, ...) is not yet supported when all validation rules are enabled, use --syntax-only to limit validation to syntax errors to use SuperHTML with templated HTML documents.
