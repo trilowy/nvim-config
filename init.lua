@@ -243,7 +243,7 @@ require('oil').setup {
 
 -- Tree directory edition
 vim.pack.add {
-  { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim', version = vim.version.range '3' },
+  { src = 'https://github.com/nvim-neo-tree/neo-tree.nvim', version = vim.version.range '3.x' },
   -- Dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',
@@ -439,12 +439,12 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Snippet engine (used for Java header comment)
-vim.pack.add { { src = 'https://github.com/L3MON4D3/LuaSnip', version = 'v2.5.0' } }
+vim.pack.add { { src = 'https://github.com/L3MON4D3/LuaSnip', version = vim.version.range '2.x' } }
 
 require('luasnip').setup()
 
 -- Better autocompletion (LSP, snippets, path)
-vim.pack.add { { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1' } }
+vim.pack.add { { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.x' } }
 
 require('blink-cmp').setup {
   keymap = {
@@ -578,7 +578,7 @@ vim.pack.add { 'https://github.com/mason-org/mason.nvim' }
 vim.pack.add { 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim' }
 
 -- Change case
-vim.pack.add { { src = 'https://github.com/gregorias/coerce.nvim', version = 'v5.0.0' } }
+vim.pack.add { { src = 'https://github.com/gregorias/coerce.nvim', version = vim.version.range '5.x' } }
 
 require('coerce').setup {
   default_mode_keymap_prefixes = {
