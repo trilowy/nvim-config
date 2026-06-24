@@ -578,15 +578,14 @@ vim.pack.add { 'https://github.com/mason-org/mason.nvim' }
 vim.pack.add { 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim' }
 
 -- Change case
-vim.pack.add { { src = 'https://github.com/gregorias/coerce.nvim', version = vim.version.range '5.x' } }
-
-require('coerce').setup {
-  default_mode_keymap_prefixes = {
-    normal_mode = '<leader>k',
-    motion_mode = '<leader>k',
-    visual_mode = '<leader>k',
-  },
+vim.pack.add {
+  { src = 'https://github.com/gregorias/coerce.nvim', version = vim.version.range '5.x' },
+  -- Dependencies
+  'https://github.com/gregorias/coop.nvim.git',
 }
+
+require('coerce').setup()
+local coerce_which_key_keymaps = require('coerce.keymaps').which_key_expand
 
 -- TODO: Buffer navigation
 -- vim.pack.add { 'https://github.com/otavioschwanck/arrow.nvim' }
@@ -837,7 +836,8 @@ require('which-key').add {
   { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
   { '<leader>r', group = '[R]ust crates', mode = { 'n', 'v' } },
   { '<leader>j', group = '[J]ava', mode = { 'n', 'v' } },
-  { '<leader>k', group = 'change case', mode = { 'n', 'v' } },
+  { '<leader>k', group = 'change case', mode = 'n', expand = coerce_which_key_keymaps.motion_mode },
+  { '<leader>k', group = 'change case', mode = 'v', expand = coerce_which_key_keymaps.visual_mode },
 }
 
 local telescope = require 'telescope.builtin'
@@ -906,6 +906,9 @@ vim.keymap.set('v', '<leader>sg', "\"zy<cmd>exec 'Telescope grep_string default_
 vim.keymap.set('v', 'gs', ':s/<bslash>(.*<bslash>)/<bslash><bslash><bslash><bslash><bslash>1<cr><cmd>nohlsearch<cr>', { desc = 'zig multiline string' })
 
 vim.keymap.set('n', '\\', '<cmd>Neotree position=float reveal<cr>', { desc = 'NeoTree reveal' })
+
+vim.keymap.set('n', '<leader>k', '<Plug>(coerce-motion)', { desc = 'change case for motion' })
+vim.keymap.set('v', '<leader>k', '<Plug>(coerce-visual)', { desc = 'change case for selection' })
 
 local crates = require 'crates'
 vim.keymap.set('n', '<leader>rt', crates.toggle, { desc = '[r]ust crates: [t]oggle' })
