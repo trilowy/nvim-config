@@ -125,6 +125,7 @@ vim.filetype.add {
 -- :lua vim.pack.update(nil, { offline = true }) show the current state of plugins without downloading new changes from sources
 -- :lua vim.pack.update(nil, { target = 'lockfile' }) make sure that plugin state on disk is the same as recorded in the lockfile
 -- :lua vim.pack.del({ 'nvim-lspconfig', 'nvim-treesitter' }) delete plugin(s) from disk. This will also remove the plugin from the lockfile
+-- After an update a confirmation buffer is shown with update details for the user to read, confirm (execute :write for that) or deny (close the window for that, like with :quit) the update
 
 -- Faster start time
 -- See https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack
@@ -266,7 +267,7 @@ require('nvim-rooter').setup()
 
 -- Fuzzy search
 vim.pack.add {
-  { src = 'https://github.com/nvim-telescope/telescope.nvim', version = '0.1.x' },
+  { src = 'https://github.com/nvim-telescope/telescope.nvim', version = vim.version.range '0.2.x' },
   -- Dependencies
   -- 'https://github.com/nvim-lua/plenary.nvim', -- Duplicate
   -- 'https://github.com/nvim-tree/nvim-web-devicons', -- Duplicate
