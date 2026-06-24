@@ -261,9 +261,10 @@ require('neo-tree').setup {
 }
 
 -- Automatically change root dir to the project of the current buffer
-vim.pack.add { 'https://github.com/notjedi/nvim-rooter.lua' }
-
-require('nvim-rooter').setup()
+-- TODO: does not work with a git repo inside a another git repo (dotfiles for home) as it autoroot 2 times
+-- vim.pack.add { 'https://github.com/notjedi/nvim-rooter.lua' }
+--
+-- require('nvim-rooter').setup()
 
 -- Fuzzy search
 vim.pack.add {
