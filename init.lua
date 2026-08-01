@@ -806,7 +806,8 @@ vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>', { desc = 'clear highlight on
 vim.keymap.set('n', '-', '<cmd>Oil<cr>', { desc = 'open parent directory' })
 
 -- In visual mode, do not loose yanked text when paste
-vim.keymap.set('x', 'p', '"_dP')
+-- vim.keymap.set('x', 'p', '"_dP')
+-- TODO: does not work when selecting with va"
 
 -- TODO: autocompletion replaced by blink?
 -- vim.keymap.set('i', '<tab>', '<c-y>', { noremap = true, desc = 'accept ([i]nsert) the completion (for some reason <c-i> = <tab>)' })
