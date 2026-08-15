@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Show line number column
 vim.opt.number = true
 -- Relative line number
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 -- Highlight cursor line
 vim.opt.cursorline = true
