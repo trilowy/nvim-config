@@ -85,6 +85,10 @@
       "rev": "7689d05e8ab95acb4b24785253d913c0aae18be9",
       "src": "https://github.com/notjedi/nvim-rooter.lua"
     },
+    "nvim-svelte-check": {
+      "rev": "277ba44a67c65bcf2dd68e734e573823bb94579a",
+      "src": "https://github.com/nvim-svelte/nvim-svelte-check"
+    },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -121,6 +125,10 @@
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
+    },
+    "tsc.nvim": {
+      "rev": "e083bcf1e54bc3af7df92b33235efb334e8c782c",
+      "src": "https://github.com/dmmulroy/tsc.nvim"
     },
     "vim-flog": {
       "rev": "665b16ac8915f746bc43c9572b4581a5e9047216",

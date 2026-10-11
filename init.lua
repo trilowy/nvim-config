@@ -356,7 +356,9 @@ require('lualine').setup {
         'lsp_status',
         icon = '',
         symbols = {
-          spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+          -- spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+          -- spinner = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+          spinner = { '⠋', '⠙', '⠹', '⠸', '⣰', '⣠', '⣄', '⣆', '⠇', '⠏' },
           done = '✓',
           -- Delimiter inserted between LSP names
           separator = ' ',
@@ -474,6 +476,7 @@ require('conform').setup {
   formatters_by_ft = {
     lua = { 'stylua' },
     javascript = { 'prettierd' },
+    typescript = { 'prettierd' },
     html = { 'prettierd' },
   },
 }
@@ -639,6 +642,31 @@ require('crates').setup {
 -- See ftplugin/java.lua for the whole configuration
 vim.pack.add { 'https://github.com/mfussenegger/nvim-jdtls' }
 
+-- -- Typescript LSP on all project
+-- vim.pack.add { 'https://github.com/dmmulroy/tsc.nvim' }
+--
+-- require('tsc').setup {
+--   -- Do not open quickfix list
+--   auto_open_qflist = false,
+--   -- :TSC command executed when enter typescript file
+--   auto_start_watch_mode = true,
+--   -- Put errors in diagnostics in addition to quickfix list
+--   use_diagnostics = true,
+--   flags = {
+--     -- :TSC command executed when save typescript file
+--     watch = true,
+--   },
+-- }
+
+-- Svelte LSP on all project
+vim.pack.add { 'https://github.com/nvim-svelte/nvim-svelte-check' }
+
+require('svelte-check').setup {
+  command = 'npm run check',
+  spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+  -- debug_mode = true,
+}
+
 -- =========
 -- || LSP ||
 -- =========
@@ -655,7 +683,9 @@ require('mason-tool-installer').setup {
     -- 'html-lsp',
     -- 'kotlin-lsp',
     -- 'superhtml',
+    'svelte-language-server',
     -- 'tailwindcss-language-server',
+    'vtsls', -- Typescript
     -- Formatter
     'prettierd',
   },
@@ -680,7 +710,9 @@ vim.lsp.enable {
   -- 'html',
   'kotlin',
   -- 'superhtml',
+  'svelte',
   -- 'tailwindcss',
+  'typescript',
   'zig',
 }
 
