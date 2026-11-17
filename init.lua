@@ -637,7 +637,7 @@ require('crates').setup {
 
 -- Java LSP
 -- See ftplugin/java.lua for the whole configuration
-vim.pack.add { 'https://github.com/mfussenegger/nvim-jdtls' }
+vim.pack.add { 'https://codeberg.org/mfussenegger/nvim-jdtls' }
 
 -- =========
 -- || LSP ||
@@ -682,6 +682,7 @@ vim.lsp.enable {
   -- 'superhtml',
   -- 'tailwindcss',
   'zig',
+  'java',
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {

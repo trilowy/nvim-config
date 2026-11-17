@@ -46,10 +46,9 @@ local config = {
     workspace_dir,
   },
 
-  -- This is the default if not provided, you can remove it. Or adjust as needed.
-  -- One dedicated LSP server & client will be started per unique root_dir
-  -- root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
-  root_dir = require('jdtls.setup').find_root { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' },
+  filetypes = { 'java' },
+
+  root_markers = { 'pom.xml', '.git' },
 
   -- Add autocomplete of function parameters
   -- Also add snippets like "sysout"
@@ -96,6 +95,10 @@ local config = {
             default = true,
             name = 'JavaSE-21',
             path = '/usr/lib64/jvm/java-21-openjdk/',
+          },
+          {
+            name = 'JavaSE-25',
+            path = '/usr/lib64/jvm/java-25-openjdk/',
           },
           {
             name = 'JavaSE-17',
@@ -249,13 +252,11 @@ local config = {
 -- Add autocomplete of function parameters
 config.capabilities = require('blink.cmp').get_lsp_capabilities()
 
--- This starts a new client & server,
--- or attaches to an existing client & server depending on the `root_dir`.
-require('jdtls').start_or_attach(config)
-
 vim.keymap.set('n', '<leader>jo', "<cmd>lua require'jdtls'.organize_imports()<cr>", { desc = '[j]ava: [o]rganize imports' })
 vim.keymap.set('n', '<leader>jv', "<cmd>lua require('jdtls').extract_variable()<cr>", { desc = '[j]ava: extract [v]ariable' })
 vim.keymap.set('v', '<leader>jv', "<esc><cmd>lua require('jdtls').extract_variable(true)<cr>", { desc = '[j]ava: extract [v]ariable' })
 vim.keymap.set('n', '<leader>jc', "<cmd>lua require('jdtls').extract_constant()<cr>", { desc = '[j]ava: extract [c]onstant' })
 vim.keymap.set('v', '<leader>jc', "<esc><cmd>lua require('jdtls').extract_constant(true)<cr>", { desc = '[j]ava: extract [c]onstant' })
 vim.keymap.set('v', '<leader>jm', "<esc><cmd>lua require('jdtls').extract_method(true)<cr>", { desc = '[j]ava: extract [m]ethod' })
+
+return config
