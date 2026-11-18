@@ -3,7 +3,24 @@
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.fn.stdpath 'data' .. '/jdtls-workspace/' .. project_name
-local jdtls_path = vim.fn.expand '$MASON/packages/jdtls/'
+local jdtls_path = vim.fn.expand '$MASON/packages/jdtls'
+
+local lombok_version = '1.18.36'
+local lombok_dir = vim.fn.stdpath 'data' .. '/java'
+local lombok_jar = lombok_dir .. '/lombok-' .. lombok_version .. '.jar'
+
+vim.fn.mkdir(lombok_dir, 'p')
+
+-- Download lombok if missing
+if vim.fn.filereadable(lombok_jar) == 0 then
+  vim.fn.system {
+    'curl',
+    '-L',
+    '-o',
+    lombok_jar,
+    'https://projectlombok.org/downloads/lombok-' .. lombok_version .. '.jar',
+  }
+end
 
 -- Determine OS
 local os
@@ -37,7 +54,7 @@ local config = {
     'java.base/java.util=ALL-UNNAMED',
     '--add-opens',
     'java.base/java.lang=ALL-UNNAMED',
-    '-javaagent:' .. jdtls_path .. '/lombok.jar',
+    '-javaagent:' .. lombok_jar,
     '-jar',
     vim.fn.glob(jdtls_path .. '/plugins/org.eclipse.equinox.launcher_*.jar'),
     '-configuration',
