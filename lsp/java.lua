@@ -5,7 +5,7 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.fn.stdpath 'data' .. '/jdtls-workspace/' .. project_name
 local jdtls_path = vim.fn.expand '$MASON/packages/jdtls'
 
-local lombok_version = '1.18.36'
+local lombok_version = '1.18.46'
 local lombok_dir = vim.fn.stdpath 'data' .. '/java'
 local lombok_jar = lombok_dir .. '/lombok-' .. lombok_version .. '.jar'
 
